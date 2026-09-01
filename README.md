@@ -245,3 +245,38 @@ verificação um texto qualquer cairia no último `else` e retornaria
 A página inclui uma bateria de doze testes automáticos, cobrindo os casos de
 borda (15, 16, 17, 18, 0, negativo, vazio, espaços, texto e cancelamento), com
 a comparação entre o resultado obtido e o esperado.
+
+## Exercício 8 — Sistema acadêmico de notas
+
+Página: `Exercicio8.html` (com `css/Exercicio8.css` e `js/exercicio06.js`).
+
+O programa solicita o nome do aluno e duas notas, calcula a média e exibe uma
+ficha com nome, notas, média com uma casa decimal e situação final.
+
+| Faixa da média | Condição | Situação |
+|---|---|---|
+| Nota fora de 0 a 10 | `nota < 0 \|\| nota > 10` | Rejeitada |
+| Menor que 5 | `media < 5` | `Reprovado` |
+| De 5 a 6,9 | `media < 7` | `Recuperação` |
+| De 7 a 10 | `media >= 7` | `Aprovado` |
+
+### Detalhes da implementação
+
+**Arredondamento só na exibição.** `toFixed(1)` é aplicado apenas na saída; a
+classificação usa o valor completo da média. Isso evita um erro sutil: uma média
+de 6,95 seria exibida como `7.0`, mas continua sendo menor que 7 e, portanto,
+`Recuperação`. Classificar sobre o texto arredondado aprovaria o aluno
+indevidamente. Vale lembrar também que `toFixed()` devolve *string*, não número
+— por isso ele nunca aparece dentro de uma comparação ou de um cálculo.
+
+**Vírgula como separador decimal.** A validação faz `replace(",", ".")` antes de
+converter, porque é assim que se digita nota no Brasil. Sem isso,
+`Number("7,5")` devolveria `NaN` e a nota seria rejeitada sem motivo real.
+
+**Ordem das condições.** Ao chegar em `media >= 5`, já se sabe que a média é
+menor que 7, porque a condição anterior falhou. A comparação dupla
+`media >= 5 && media < 7` seria redundante.
+
+A página inclui uma bateria de doze testes cobrindo os limites das faixas (7,0
+exato, 5,0 exato, 6,9/7,1) e as rejeições (nota 11, nota negativa, texto e campo
+vazio).

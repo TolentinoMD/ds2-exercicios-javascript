@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistema acadêmico de notas</title>
+  <link rel="stylesheet" href="css/Exercicio8.css">
+</head>
+<body>
+<main>
+
+  <header class="cabecalho">
+    <h1>Sistema acadêmico de notas</h1>
+    <p class="subtitulo">Desenvolvimento para Servidores II &middot; Exercício 8</p>
+    <a href="index.html">Voltar para a página principal</a>
+  </header>
+
+  <section class="instrucoes">
+    <h2>Como executar</h2>
+    <ol>
+      <li>Pressione <kbd>F12</kbd> e abra a aba <strong>Console</strong>.</li>
+      <li>Clique em <strong>Lançar notas</strong> e informe o nome e as duas notas.</li>
+      <li>Teste também notas fora do intervalo de 0 a 10 para ver a rejeição.</li>
+    </ol>
+    <button type="button" id="btnIniciar" class="botao-demo">Lançar notas</button>
+  </section>
+
+  <section>
+    <h2>Ficha do aluno</h2>
+    <div class="ficha" id="ficha" data-situacao="aguardando">
+      <header class="ficha-topo">
+        <p class="ficha-nome" id="fichaNome">Aguardando lançamento</p>
+        <span class="ficha-situacao" id="fichaSituacao">—</span>
+      </header>
+
+      <div class="ficha-corpo">
+        <div class="celula">
+          <span class="celula-rotulo">Nota 1</span>
+          <span class="celula-valor" id="fichaNota1">—</span>
+        </div>
+        <div class="celula">
+          <span class="celula-rotulo">Nota 2</span>
+          <span class="celula-valor" id="fichaNota2">—</span>
+        </div>
+        <div class="celula media">
+          <span class="celula-rotulo">Média</span>
+          <span class="celula-valor" id="fichaMedia">—</span>
+        </div>
+      </div>
+
+      <p class="ficha-detalhe" id="fichaDetalhe">
+        A ficha é preenchida após o lançamento e também exibida no console.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Critérios de classificação</h2>
+    <div class="tabela-rolagem">
+      <table class="dados">
+        <thead>
+          <tr>
+            <th>Faixa da média</th>
+            <th>Condição no código</th>
+            <th>Situação</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Nota fora de 0 a 10</th>
+            <td class="mono">nota &lt; 0 || nota &gt; 10</td>
+            <td><span class="etiqueta invalida">Rejeitada</span></td>
+          </tr>
+          <tr>
+            <th scope="row">Média menor que 5</th>
+            <td class="mono">media &lt; 5</td>
+            <td><span class="etiqueta reprovado">Reprovado</span></td>
+          </tr>
+          <tr>
+            <th scope="row">Média de 5 a 6,9</th>
+            <td class="mono">media &lt; 7</td>
+            <td><span class="etiqueta recuperacao">Recuperação</span></td>
+          </tr>
+          <tr>
+            <th scope="row">Média de 7 a 10</th>
+            <td class="mono">media &gt;= 7</td>
+            <td><span class="etiqueta aprovado">Aprovado</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="apoio">
+      A média é exibida com uma casa decimal por meio de
+      <code>toFixed(1)</code>, mas a classificação usa o valor completo, sem
+      arredondamento — o motivo está explicado no README.
+    </p>
+  </section>
+
+  <section>
+    <h2>Bateria de testes</h2>
+    <p class="apoio">
+      Executa a validação e a classificação com valores prontos, incluindo os
+      casos de borda das faixas.
+    </p>
+    <button type="button" id="btnTestes" class="botao-demo secundario">Rodar testes</button>
+    <div class="tabela-rolagem">
+      <table class="dados">
+        <thead>
+          <tr>
+            <th>Notas</th>
+            <th>Média</th>
+            <th>Resultado</th>
+            <th>Situação do teste</th>
+          </tr>
+        </thead>
+        <tbody id="corpoTestes">
+          <tr class="vazio"><td colspan="4">Nenhum teste executado ainda.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <footer>
+    Notas de aulas Desenvolvimento para Servidores II
+    Professor Marcos Costa
+  </footer> 
+
+
+</main>
+
+<script src="js/exercicio8.js"></script>
+</body>
+</html>
