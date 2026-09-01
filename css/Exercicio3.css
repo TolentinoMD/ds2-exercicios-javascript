@@ -1,47 +1,126 @@
-    body {
-      margin: 0;
-      padding: 2.5rem 1.25rem 4rem;
-      background: #faf9f7;
-      color: #1c1c1e;
-      font-family: Georgia, "Times New Roman", serif;
-      line-height: 1.65;
-    }
-    main { max-width: 780px; margin: 0 auto; }
-    h1 { font-size: 2.1rem; margin: 0 0 .25rem; }
-    .subtitulo {
-      font-family: Arial, sans-serif;
-      font-size: .8rem;
-      text-transform: uppercase;
-      letter-spacing: .14em;
-      color: #6b6862;
-      margin: 0 0 2.25rem;
-    }
-    h2 {
-      font-size: 1.25rem;
-      margin: 2.5rem 0 .75rem;
-      padding-bottom: .4rem;
-      border-bottom: 1px solid #d8d4cd;
-    }
-    h3 { font-size: 1rem; margin: 1.5rem 0 .4rem; }
-    code {
-      font-family: Consolas, monospace;
-      font-size: .88em;
-      background: #efece6;
-      padding: .1rem .35rem;
-      border-radius: 3px;
-    }
-    .exemplo {
-      border-left: 3px solid #2f5d50;
-      padding: .1rem 0 .1rem 1rem;
-      margin: .9rem 0;
-      background: #f2f0ec;
-    }
-    ol.fluxo li { margin-bottom: .55rem; }
-    footer {
-      margin-top: 3.5rem;
-      padding-top: 1rem;
-      border-top: 1px solid #d8d4cd;
-      font-family: Arial, sans-serif;
-      font-size: .82rem;
-      color: #6b6862;
-    }
+:root {
+  --tinta: #1c1c1e;
+  --papel: #faf9f7;
+  --linha: #d8d4cd;
+  --suave: #f2f0ec;
+  --apoio: #6b6862;
+  --erro: #a12c2c;
+  --terminal-fundo: #1e1e22;
+  --terminal-texto: #d6e8d4;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 2.5rem 1.25rem 4rem;
+  background: var(--papel);
+  color: var(--tinta);
+  font-family: Georgia, "Times New Roman", serif;
+  line-height: 1.6;
+}
+
+main { max-width: 780px; margin: 0 auto; }
+
+.cabecalho h1 {
+  font-size: 2rem;
+  margin: 0 0 .25rem;
+  letter-spacing: -.02em;
+}
+
+.subtitulo {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: .8rem;
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  color: var(--apoio);
+  margin: 0 0 2.5rem;
+}
+
+h2 {
+  font-size: 1.2rem;
+  margin: 2.5rem 0 .75rem;
+  padding-bottom: .4rem;
+  border-bottom: 1px solid var(--linha);
+}
+
+.apoio { color: var(--apoio); font-size: .95rem; }
+
+code {
+  font-family: Consolas, "Courier New", monospace;
+  font-size: .88em;
+  background: #efece6;
+  padding: .1rem .35rem;
+  border-radius: 3px;
+}
+
+kbd {
+  font-family: Consolas, "Courier New", monospace;
+  font-size: .8em;
+  background: #fff;
+  border: 1px solid var(--linha);
+  border-bottom-width: 2px;
+  border-radius: 4px;
+  padding: .1rem .4rem;
+}
+
+.instrucoes ol { padding-left: 1.3rem; }
+.instrucoes li { margin-bottom: .45rem; }
+
+/* ---------- Terminal simulado ---------- */
+
+.terminal {
+  background: var(--terminal-fundo);
+  color: var(--terminal-texto);
+  border-radius: 6px;
+  padding: 1rem 1.2rem;
+  font-family: Consolas, "Courier New", monospace;
+  font-size: .87rem;
+  line-height: 1.75;
+  overflow-x: auto;
+}
+
+.terminal p { margin: 0; white-space: nowrap; }
+
+.terminal .prompt {
+  color: #7fa9d4;
+  margin-right: .5rem;
+  user-select: none;
+}
+
+/* ---------- Botão de erro ---------- */
+
+.botao-erro {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: .9rem;
+  padding: .6rem 1.1rem;
+  border: 1px solid var(--erro);
+  border-radius: 4px;
+  background: var(--erro);
+  color: #fff;
+  cursor: pointer;
+}
+
+.botao-erro:hover { opacity: .9; }
+
+.tempo {
+  font-family: Consolas, "Courier New", monospace;
+  font-size: .82rem;
+  color: var(--apoio);
+  margin: .8rem 0 0;
+}
+
+footer {
+  margin-top: 3.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--linha);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: .82rem;
+  color: var(--apoio);
+}
+
+@media (max-width: 600px) {
+  body { padding: 1.75rem 1rem 3rem; }
+  .cabecalho h1 { font-size: 1.6rem; }
+  .terminal p { white-space: normal; }
+}

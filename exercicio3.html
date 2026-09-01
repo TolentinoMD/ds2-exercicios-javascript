@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Primeiro script e diagnóstico pelo console</title>
+  <link rel="stylesheet" href="css/Exercicio3.css">
+</head>
+<body>
+<main>
+
+  <header class="cabecalho">
+    <h1>Primeiro script e diagnóstico pelo console</h1>
+    <p class="subtitulo">Desenvolvimento para Servidores II &middot; Exercício 3</p>
+  </header>
+
+  <section class="instrucoes">
+    <h2>Como executar</h2>
+    <ol>
+      <li>Pressione <kbd>F12</kbd> (ou <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>I</kbd>) e abra a aba <strong>Console</strong>.</li>
+      <li>Recarregue a página com <kbd>F5</kbd>: as quatro mensagens são exibidas automaticamente.</li>
+      <li>Tire a captura de tela e salve em <code>evidencias/exercicio01-execucao.png</code>.</li>
+      <li>Clique no botão vermelho abaixo para provocar o erro e capture a tela em <code>evidencias/exercicio01-erro.png</code>.</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>Saída esperada no console</h2>
+    <div class="terminal">
+      <p><span class="prompt">&gt;</span> Nome completo: Michael Douglas Alves Tolentino</p>
+      <p><span class="prompt">&gt;</span> Curso: Sistemas para Internet</p>
+      <p><span class="prompt">&gt;</span> Funcionalidade desejada: um painel de notas que calcula a média do semestre automaticamente</p>
+      <p><span class="prompt">&gt;</span> JavaScript carregado com sucesso!</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Diagnóstico do erro</h2>
+    <p class="apoio">
+      O botão abaixo executa <code>Console.log</code> com "C" maiúsculo, provocando
+      o erro de propósito. A página continua funcionando; o erro aparece apenas no console.
+    </p>
+    <button type="button" id="btnErro" class="botao-erro">Provocar erro no console</button>
+    <p class="tempo" id="statusErro">Nenhum erro provocado ainda.</p>
+  </section>
+
+  <footer>
+    Notas de aulas Desenvolvimento para Servidores II
+    Professor Marcos Costa
+  </footer> 
+
+</main>
+
+<script src="js/Exercicio3.js"></script>
+</body>
+</html>
