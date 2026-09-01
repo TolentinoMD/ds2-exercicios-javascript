@@ -133,3 +133,81 @@ ser modificado, apenas a variável não pode apontar para outro valor.
 A página traz dois botões que demonstram isso na prática: um tenta reatribuir a
 `const` e captura o `TypeError`, o outro incrementa a `let` normalmente.
 
+## Exercício 5 — Entrada de dados e concatenação
+
+Página: `Exercicio5.html` (com `css/Exercicio5.css` e `js/exercicio03.js`).
+
+O programa solicita nome, idade, curso e cidade por meio de `prompt()` e exibe a
+apresentação no console em duas versões.
+
+**Solução 1 — concatenação com `+`:**
+
+```js
+const apresentacaoConcatenada =
+  "Olá, meu nome é " + nome +
+  ", tenho " + idade +
+  " anos, moro em " + cidade +
+  " e estou cursando " + curso + ".";
+```
+
+**Solução 2 — template string:**
+
+```js
+const apresentacaoTemplate =
+  `Olá, meu nome é ${nome}, tenho ${idade} anos, moro em ${cidade} e estou cursando ${curso}.`;
+```
+
+As duas produzem exatamente o mesmo texto — o script confirma isso comparando os
+resultados com `===`. A diferença está na escrita: com o operador `+`, o texto é
+fragmentado e cada espaço precisa ser digitado dentro das aspas (esquecer um
+espaço gera `tenho22`, um erro silencioso e frequente). Com template string, o
+texto fica contínuo, os espaços ficam naturalmente no lugar, é possível quebrar
+linha diretamente e usar expressões dentro de `${}`.
+
+Vale registrar que todo valor devolvido por `prompt()` é do tipo `string`,
+inclusive a idade — a tabela da página mostra o `typeof` de cada campo. Aqui
+isso não causa problema porque a idade apenas é exibida; no Exercício 6, em que
+ela entra em um cálculo, a conversão se torna obrigatória.
+
+## Exercício 6 — Conversão de dados e cálculo de idade
+
+Página: `Exercicio6.html` (com `css/Exercicio6.css` e `js/exercicio04.js`).
+
+O programa solicita a idade, exibe o valor original devolvido pelo `prompt()` e
+o seu tipo, converte para número com `Number()`, soma cinco anos e apresenta o
+resultado. Entradas vazias ou não numéricas são rejeitadas com `isNaN()`.
+
+### Por que `20 + 5` pode resultar em `205`
+
+A função `prompt()` **sempre devolve uma string**, mesmo quando o usuário digita
+apenas números. Ao digitar `20`, a variável recebe o texto `"20"` e não o
+número `20`.
+
+No JavaScript o operador `+` tem dois papéis. Se os dois operandos forem
+números, ele soma; se pelo menos um deles for string, ele passa a ser operador
+de **concatenação** e converte o outro operando para texto:
+
+```js
+const idade = prompt("Idade:");   // usuário digita 20  ->  idade vale "20" (string)
+
+console.log(idade + 5);           // "20" + 5  ->  "20" + "5"  ->  "205"
+console.log(Number(idade) + 5);   //  20  + 5  ->  25
+```
+
+Esse comportamento se chama *coerção de tipo*. A solução é converter a entrada
+antes de calcular, usando `Number(idade)`, `parseInt(idade, 10)` ou o operador
+unário `+idade`, e verificar o resultado com `isNaN()` para rejeitar textos que
+não representam números.
+
+Detalhe útil na depuração: os operadores `-`, `*` e `/` não têm essa
+ambiguidade e convertem para número automaticamente — `"20" - 5` resulta em
+`15`. Apenas o `+` é sobrecarregado, e é por isso que só ele produz o `205`.
+
+| Expressão | Resultado | Tipo | O que acontece |
+|---|---|---|---|
+| `"20" + 5` | `"205"` | string | Um operando é string, então o `+` concatena |
+| `Number("20") + 5` | `25` | number | Ambos são números, o `+` soma |
+| `"20" - 5` | `15` | number | O `-` converte automaticamente |
+| `+"20" + 5` | `25` | number | O `+` unário converte antes da soma |
+| `parseInt("20a")` | `20` | number | Lê os dígitos iniciais e ignora o resto |
+| `Number("20a")` | `NaN` | number | Exige a string inteira válida |

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conversão de dados e cálculo de idade</title>
+  <link rel="stylesheet" href="css/Exercicio6.css">
+</head>
+<body>
+<main>
+
+  <header class="cabecalho">
+    <h1>Conversão de dados e cálculo de idade</h1>
+    <p class="subtitulo">Desenvolvimento para Servidores II - Exercício 6</p>
+        <a href="index.html">Voltar para a página principal</a>
+  </header>
+
+  <section class="instrucoes">
+    <h2>Como executar</h2>
+    <ol>
+      <li>Pressione <kbd>F12</kbd> e abra a aba <strong>Console</strong>.</li>
+      <li>Clique em <strong>Informar idade</strong> e digite um número.</li>
+      <li>Acompanhe as cinco etapas: valor original, tipo, conversão, soma e resultado.</li>
+    </ol>
+    <button type="button" id="btnIniciar" class="botao-demo">Informar idade</button>
+  </section>
+
+  <section>
+    <h2>Etapas do processamento</h2>
+    <ol class="etapas" id="etapas">
+      <li class="etapa">
+        <span class="rotulo">Valor original do <code>prompt()</code></span>
+        <span class="dado" id="valorOriginal">—</span>
+      </li>
+      <li class="etapa">
+        <span class="rotulo">Tipo do valor original</span>
+        <span class="dado" id="tipoOriginal">—</span>
+      </li>
+      <li class="etapa">
+        <span class="rotulo">Valor após <code>Number()</code></span>
+        <span class="dado" id="valorConvertido">—</span>
+      </li>
+      <li class="etapa">
+        <span class="rotulo">Tipo após a conversão</span>
+        <span class="dado" id="tipoConvertido">—</span>
+      </li>
+      <li class="etapa destaque">
+        <span class="rotulo">Resultado final</span>
+        <span class="dado" id="resultadoFinal">—</span>
+      </li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>Com conversão × sem conversão</h2>
+    <p class="apoio">
+      A mesma operação, com e sem <code>Number()</code>. A diferença entre soma e
+      concatenação fica evidente aqui.
+    </p>
+
+    <div class="comparacao">
+      <div class="cartao certo">
+        <h3>Com conversão</h3>
+        <p class="expressao" id="expressaoCerta">Number(idade) + 5</p>
+        <p class="resultado" id="resultadoCerto">—</p>
+        <p class="nota">Soma aritmética entre dois números.</p>
+      </div>
+
+      <div class="cartao errado">
+        <h3>Sem conversão</h3>
+        <p class="expressao" id="expressaoErrada">idade + 5</p>
+        <p class="resultado" id="resultadoErrado">—</p>
+        <p class="nota">Concatenação: o <code>+</code> junta textos.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Como cada operador se comporta com strings</h2>
+    <div class="tabela-rolagem">
+      <table class="dados">
+        <thead>
+          <tr>
+            <th>Expressão</th>
+            <th>Resultado</th>
+            <th>Tipo</th>
+            <th>O que acontece</th>
+          </tr>
+        </thead>
+        <tbody id="corpoOperadores">
+          <!-- Preenchido por js/exercicio04.js -->
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <footer>
+    Notas de aulas Desenvolvimento para Servidores II
+    Professor Marcos Costa
+  </footer> 
+
+</main>
+
+<script src="js/exercicio6.js"></script>
+</body>
+</html>
