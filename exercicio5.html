@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Entrada de dados e concatenação</title>
+  <link rel="stylesheet" href="css/Exercicio5.css">
+</head>
+<body>
+<main>
+
+  <header class="cabecalho">
+    <h1>Entrada de dados e concatenação</h1>
+    <p class="subtitulo">Desenvolvimento para Servidores II - Exercício 5</p>
+    <a href="index.html">Voltar para a página principal</a>
+  </header>
+
+  <section class="instrucoes">
+    <h2>Como executar</h2>
+    <ol>
+      <li>Pressione <kbd>F12</kbd> e abra a aba <strong>Console</strong>.</li>
+      <li>Clique em <strong>Iniciar coleta</strong>: quatro caixas de diálogo pedirão os dados.</li>
+      <li>As duas versões da apresentação são exibidas no console e também na página.</li>
+    </ol>
+    <button type="button" id="btnIniciar" class="botao-demo">Iniciar coleta</button>
+  </section>
+
+  <section>
+    <h2>Dados coletados</h2>
+    <div class="tabela-rolagem">
+      <table class="dados">
+        <thead>
+          <tr>
+            <th>Campo</th>
+            <th>Valor informado</th>
+            <th>typeof</th>
+          </tr>
+        </thead>
+        <tbody id="corpoDados">
+          <tr class="vazio"><td colspan="3">Nenhum dado coletado ainda.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>Solução 1 — concatenação com o operador <code>+</code></h2>
+    <div class="terminal" id="saidaConcatenacao">
+      <p class="aguardando">Aguardando a coleta dos dados…</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Solução 2 — template string</h2>
+    <div class="terminal" id="saidaTemplate">
+      <p class="aguardando">Aguardando a coleta dos dados…</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Comparação entre as duas formas</h2>
+    <div class="tabela-rolagem">
+      <table class="dados">
+        <thead>
+          <tr>
+            <th>Aspecto</th>
+            <th>Concatenação com <code>+</code></th>
+            <th>Template string</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Sintaxe</th>
+            <td>Aspas simples ou duplas, unidas por <code>+</code>.</td>
+            <td>Crases (<code>`</code>) com <code>${variavel}</code> no meio do texto.</td>
+          </tr>
+          <tr>
+            <th scope="row">Legibilidade</th>
+            <td>Piora conforme cresce: alterna aspas, sinais de <code>+</code> e espaços soltos.</td>
+            <td>O texto final fica visível de forma contínua, como será exibido.</td>
+          </tr>
+          <tr>
+            <th scope="row">Espaços</th>
+            <td>Precisam ser digitados dentro das aspas; esquecê-los é o erro mais comum.</td>
+            <td>Ficam naturalmente no texto, sem risco de omissão.</td>
+          </tr>
+          <tr>
+            <th scope="row">Quebra de linha</th>
+            <td>Exige <code>\n</code> ou várias concatenações.</td>
+            <td>Basta quebrar a linha dentro das crases.</td>
+          </tr>
+          <tr>
+            <th scope="row">Expressões</th>
+            <td>Precisam ser calculadas fora ou entre parênteses.</td>
+            <td>Aceita expressões diretamente: <code>${idade + 5}</code>.</td>
+          </tr>
+          <tr>
+            <th scope="row">Disponibilidade</th>
+            <td>Existe desde as primeiras versões do JavaScript.</td>
+            <td>Introduzida no ES6 (2015); padrão nos navegadores atuais.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <footer>
+    Notas de aulas Desenvolvimento para Servidores II
+    Professor Marcos Costa
+  </footer> 
+
+</main>
+
+<script src="js/exercicio5.js"></script>
+</body>
+</html>

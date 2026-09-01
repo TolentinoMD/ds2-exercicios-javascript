@@ -1,8 +1,3 @@
-/* =========================================================
-   Exercício 2 — Client-side e server-side
-   Arquivo: js/Exercicio2.js
-   ========================================================= */
-
 // ---------- Dados: classificação das seis operações ----------
 
 const operacoes = [

@@ -68,3 +68,68 @@ Página: `Exercicio2.html` (com `css/Exercicio2.css` e `js/Exercicio2.js`).
 **Regra prática:** o que serve à experiência de uso pode ficar no cliente; o que
 envolve segurança, dinheiro ou dados persistentes precisa ficar no servidor.
 Nunca confie em nada que venha do navegador.
+
+## Exercício 3 — Primeiro script e diagnóstico pelo console
+
+Página: `Exercicio3.html` (com `css/Exercicio3.css` e `js/exercicio01.js`).
+
+O script exibe no console, em chamadas separadas:
+
+- o nome completo do aluno;
+- o nome do curso;
+- uma funcionalidade que o aluno gostaria de desenvolver com JavaScript;
+- a mensagem `JavaScript carregado com sucesso!`.
+
+### Erro provocado intencionalmente
+
+Após trocar `console.log` por `Console.log`, a mensagem exibida no console foi:
+
+Uncaught TypeError: Console.log is not a function
+at exercicio01.js:24
+
+> Em alguns navegadores, quando o identificador não existe no contexto, o erro
+> aparece como `Uncaught ReferenceError: Console is not defined`.
+
+**Motivo do erro:** o JavaScript é *case sensitive*, ou seja, diferencia letras
+maiúsculas de minúsculas. O objeto global disponibilizado pelo navegador para
+escrever mensagens de diagnóstico chama-se `console`, com "c" minúsculo. Ao
+escrever `Console`, o interpretador procura por um identificador diferente:
+encontra a interface `Console` (o construtor), que não possui o método `log`
+acessível dessa forma, e a chamada falha com `TypeError`. Como o erro é
+lançado em tempo de execução, ele interrompe o script naquele ponto — por isso
+nenhuma linha posterior seria executada, caso houvesse.
+
+O código foi corrigido de volta para `console.log`. A linha com erro permanece
+comentada no arquivo, apenas para registro.
+
+### Evidências
+
+Capturas salvas na pasta `evidencias/`:
+
+- `exercicio01-execucao.png` — console exibindo as quatro mensagens corretamente;
+- `exercicio01-erro.png` — console exibindo o `TypeError` após a troca por `Console.log`.
+
+## Exercício 4 — Variáveis e tipos de dados
+
+Página: `Exercicio4.html` (com `css/Exercicio4.css` e `js/exercicio02.js`).
+
+| Declaração | Variável | Valor | `typeof` |
+|---|---|---|---|
+| `const` | `nome` | `"Michael Douglas Alves Tolentino"` | `string` |
+| `let` | `idade` | `22` | `number` |
+| `const` | `cidade` | `"São Roque"` | `string` |
+| `const` | `matriculado` | `true` | `boolean` |
+| `const` | `nota` | `8.5` | `number` |
+
+**Por que `const` e por que `let`:** `nome`, `cidade`, `matriculado` e `nota`
+não mudam durante a execução, então usam `const`, que impede a reatribuição e
+comunica essa intenção a quem lê o código. `idade` usa `let` porque é o único
+valor sujeito a alteração (aniversário, correção de cadastro).
+
+Vale registrar que `const` não significa valor imutável, e sim referência não
+reatribuível: em arrays e objetos declarados com `const`, o conteúdo ainda pode
+ser modificado, apenas a variável não pode apontar para outro valor.
+
+A página traz dois botões que demonstram isso na prática: um tenta reatribuir a
+`const` e captura o `TypeError`, o outro incrementa a `let` normalmente.
+
