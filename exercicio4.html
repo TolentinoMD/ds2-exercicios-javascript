@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Variáveis e tipos de dados</title>
+  <link rel="stylesheet" href="css/Exercicio4.css">
+</head>
+<body>
+<main>
+
+  <header class="cabecalho">
+    <h1>Variáveis e tipos de dados</h1>
+    <p class="subtitulo">Desenvolvimento para Servidores II - Exercício 4</p>
+  </header>
+
+  <section class="instrucoes">
+    <h2>Como executar</h2>
+    <ol>
+      <li>Pressione <kbd>F12</kbd> e abra a aba <strong>Console</strong>.</li>
+      <li>Recarregue a página com <kbd>F5</kbd>: os valores e os tipos são exibidos automaticamente.</li>
+      <li>A tabela abaixo é preenchida pelo mesmo script, para conferência visual.</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>Valores e tipos</h2>
+    <div class="tabela-rolagem">
+      <table class="variaveis">
+        <thead>
+          <tr>
+            <th>Declaração</th>
+            <th>Variável</th>
+            <th>Valor</th>
+            <th>typeof</th>
+          </tr>
+        </thead>
+        <tbody id="corpoTabela">
+          <!-- Preenchido por js/exercicio02.js -->
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>const não é imutável, é não reatribuível</h2>
+    <p class="apoio">
+      O botão da esquerda tenta reatribuir uma <code>const</code> e falha. O da
+      direita reatribui a <code>let</code> normalmente. Acompanhe pelo console.
+    </p>
+
+    <div class="demo">
+      <div class="demo-bloco">
+        <h3>Tentar alterar a <code>const</code></h3>
+        <p>Reatribuir <code>nome</code> dispara um <code>TypeError</code>.</p>
+        <button type="button" id="btnConst" class="botao-demo erro">Tentar reatribuir</button>
+        <p class="saida" id="saidaConst">Nenhuma tentativa ainda.</p>
+      </div>
+
+      <div class="demo-bloco">
+        <h3>Alterar a <code>let</code></h3>
+        <p>Reatribuir <code>idade</code> funciona sem erro.</p>
+        <button type="button" id="btnLet" class="botao-demo">Fazer aniversário</button>
+        <p class="saida" id="saidaLet">Idade ainda não alterada.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    Notas de aulas Desenvolvimento para Servidores II
+    Professor Marcos Costa
+  </footer> 
+
+</main>
+
+<script src="js/Exercicio4.js"></script>
+</body>
+</html>
