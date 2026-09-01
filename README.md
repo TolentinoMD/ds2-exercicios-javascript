@@ -428,3 +428,48 @@ código-fonte e o bloqueio existe apenas na memória da página, sumindo ao
 recarregar. Em um sistema real a contagem de tentativas fica no servidor,
 associada à conta ou ao IP, geralmente com espera progressiva entre as
 tentativas para dificultar ataques de força bruta.
+
+## Exercício 13 — Funções, parâmetros e retorno
+
+Página: `Exercicio13.html` (com `css/Exercicio13.css` e `js/exercicio11.js`).
+
+| Assinatura | Parâmetros | Retorno | Responsabilidade |
+|---|---|---|---|
+| `somar(numero1, numero2)` | 2 números | `number` | Devolve a soma |
+| `calcularMedia(nota1, nota2)` | 2 números | `number` | Devolve a média aritmética |
+| `classificarMedia(media)` | 1 número | `string` | `Aprovado`, `Recuperação` ou `Reprovado` |
+| `criarSaudacao(nome)` | 1 texto | `string` | Mensagem personalizada |
+
+Os retornos são armazenados em variáveis antes de serem exibidos:
+
+```js
+const soma = somar(7, 3);
+const media = calcularMedia(8, 6);
+const situacao = classificarMedia(media);
+const saudacao = criarSaudacao("Michael Douglas");
+```
+
+### Decisões de implementação
+
+**`return` em vez de `console.log` dentro da função.** Nenhuma das quatro
+funções escreve no console: cada uma apenas devolve um valor, e quem chama
+decide o que fazer com ele. Se a função imprimisse internamente, retornaria
+`undefined` e o resultado seria impossível de reaproveitar — não daria para
+guardar em variável nem passar adiante.
+
+**Retorno antecipado.** Em `classificarMedia()`, cada `return` encerra a função
+na hora. Como o fluxo não continua depois de um `return`, não é preciso escrever
+`else`: ao chegar na segunda comparação já se sabe que a média é menor que 7.
+
+**Responsabilidade única.** `calcularMedia()` calcula e não classifica;
+`classificarMedia()` classifica e não calcula. É isso que permite compor as
+duas: `classificarMedia(calcularMedia(8, 6))`.
+
+**Parâmetro e argumento.** Parâmetro é o nome na declaração (`numero1`);
+argumento é o valor passado na chamada (`7`). O parâmetro só existe dentro da
+função.
+
+Essas mesmas funções são reaproveitadas sem alteração no desafio final — o ganho
+concreto de organizar os cálculos em funções em vez de repetir a lógica em cada
+arquivo.
+
