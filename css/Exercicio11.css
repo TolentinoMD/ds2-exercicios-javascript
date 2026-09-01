@@ -1,0 +1,47 @@
+    body {
+      margin: 0;
+      padding: 2.5rem 1.25rem 4rem;
+      background: #faf9f7;
+      color: #1c1c1e;
+      font-family: Georgia, "Times New Roman", serif;
+      line-height: 1.65;
+    }
+    main { max-width: 780px; margin: 0 auto; }
+    h1 { font-size: 2.1rem; margin: 0 0 .25rem; }
+    .subtitulo {
+      font-family: Arial, sans-serif;
+      font-size: .8rem;
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      color: #6b6862;
+      margin: 0 0 2.25rem;
+    }
+    h2 {
+      font-size: 1.25rem;
+      margin: 2.5rem 0 .75rem;
+      padding-bottom: .4rem;
+      border-bottom: 1px solid #d8d4cd;
+    }
+    h3 { font-size: 1rem; margin: 1.5rem 0 .4rem; }
+    code {
+      font-family: Consolas, monospace;
+      font-size: .88em;
+      background: #efece6;
+      padding: .1rem .35rem;
+      border-radius: 3px;
+    }
+    .exemplo {
+      border-left: 3px solid #2f5d50;
+      padding: .1rem 0 .1rem 1rem;
+      margin: .9rem 0;
+      background: #f2f0ec;
+    }
+    ol.fluxo li { margin-bottom: .55rem; }
+    footer {
+      margin-top: 3.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid #d8d4cd;
+      font-family: Arial, sans-serif;
+      font-size: .82rem;
+      color: #6b6862;
+    }

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fundamentos da Web</title>
+  <link rel="stylesheet" href="css/Exercicio1.css">
+</head>
+<body>
+<main>
+  <h1>Fundamentos da Web</h1>
+  <p class="subtitulo">Desenvolvimento para Servidores II Exercício 1</p>
+  <a href="index.html">Voltar para a página principal</a>
+
+  <h2>Página estática</h2>
+  <p>
+    Página estática é aquela cujo conteúdo já está pronto em um arquivo armazenado
+    no servidor e é entregue ao navegador exatamente como foi gravado. O servidor
+    apenas localiza o arquivo e o devolve, sem executar nenhum processamento ou
+    consulta a banco de dados. Todos os visitantes recebem o mesmo resultado, e
+    qualquer alteração exige a edição manual do arquivo por um desenvolvedor.
+  </p>
+  <div class="exemplo">
+    <h3>Exemplo real</h3>
+    <p>
+      A documentação do <strong>MDN Web Docs</strong> e sites institucionais simples
+      publicados no <strong>GitHub Pages</strong>: são arquivos <code>.html</code>,
+      <code>.css</code> e imagens servidos diretamente, idênticos para qualquer visitante.
+    </p>
+  </div>
+
+  <h2>Página dinâmica</h2>
+  <p>
+    Página dinâmica é aquela cujo conteúdo é gerado no momento em que a requisição
+    chega ao servidor. Um programa (em PHP, Node.js, Python, Java, entre outros)
+    é executado, normalmente consulta um banco de dados ou uma API, monta o HTML
+    de acordo com quem está pedindo e só então envia a resposta. O mesmo endereço
+    pode devolver conteúdos diferentes para usuários diferentes ou em momentos
+    diferentes.
+  </p>
+  <div class="exemplo">
+    <h3>Exemplo real</h3>
+    <p>
+      O <strong>feed do Instagram</strong> ou a página <em>"Meus pedidos"</em> da
+      <strong>Amazon</strong>: cada usuário recebe uma página montada com os dados
+      da própria conta, buscados em banco de dados no instante do acesso.
+    </p>
+  </div>
+
+  <h2>Caminho básico de uma requisição</h2>
+  <ol class="fluxo">
+    <li>O usuário digita o endereço na barra do navegador ou clica em um link.</li>
+    <li>O navegador consulta o <strong>DNS</strong> para descobrir o endereço IP correspondente ao domínio.</li>
+    <li>O navegador abre uma conexão com o servidor (TCP e, em HTTPS, o handshake TLS).</li>
+    <li>O navegador envia uma <strong>requisição HTTP</strong> (por exemplo, <code>GET /index.html</code>) com cabeçalhos e, quando existem, dados do formulário.</li>
+    <li>O servidor web recebe a requisição e identifica o recurso solicitado.</li>
+    <li>Se o recurso for <strong>estático</strong>, o servidor apenas lê o arquivo em disco; se for <strong>dinâmico</strong>, ele aciona o código do lado servidor, que consulta o banco de dados e gera o HTML.</li>
+    <li>O servidor devolve uma <strong>resposta HTTP</strong> com um código de status (200, 404, 500&hellip;), cabeçalhos e o corpo do documento.</li>
+    <li>O navegador interpreta o HTML, monta o DOM e solicita os arquivos vinculados (CSS, JavaScript, imagens), repetindo o ciclo para cada um.</li>
+    <li>O navegador aplica os estilos, executa o JavaScript e renderiza a página final na tela do usuário.</li>
+  </ol>
+
+  <footer>
+    Repositório
+    Notas de aulas Desenvolvimento para Servidores II
+    Professor Marcos Costa
+  </footer> 
+</main>
+</body>
+</html>
