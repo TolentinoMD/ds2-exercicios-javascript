@@ -280,3 +280,52 @@ menor que 7, porque a condição anterior falhou. A comparação dupla
 A página inclui uma bateria de doze testes cobrindo os limites das faixas (7,0
 exato, 5,0 exato, 6,9/7,1) e as rejeições (nota 11, nota negativa, texto e campo
 vazio).
+
+## Exercício 9 — Login simples
+
+Página: `Exercicio9.html` (com `css/Exercicio9.css` e `js/exercicio07.js`).
+
+O programa solicita usuário e senha e compara com `admin` / `1234` usando
+comparação estrita. Se ambos conferirem, exibe `Acesso permitido`; caso
+contrário, `Acesso negado`.
+
+```js
+if (usuario === USUARIO_CORRETO && senha === SENHA_CORRETA) {
+  console.log("Acesso permitido");
+} else {
+  console.log("Acesso negado");
+}
+```
+
+### Diferença entre `=` e `===`
+
+| Operador | Nome | O que faz |
+|---|---|---|
+| `=` | Atribuição | Coloca um valor dentro de uma variável e devolve esse valor |
+| `==` | Igualdade solta | Compara apenas o valor, convertendo tipos antes (coerção) |
+| `===` | Igualdade estrita | Compara valor **e** tipo, sem nenhuma conversão |
+
+O `=` não pergunta nada, apenas grava. Como a expressão devolve o valor
+atribuído, usar `=` dentro de um `if` faz a condição ser **sempre verdadeira** e
+ainda sobrescreve a variável — e o pior é que isso não gera erro algum: o
+programa roda e entrega o resultado errado em silêncio. A página traz um botão
+que demonstra exatamente esse bug, mostrando a variável sendo sobrescrita pela
+própria condição.
+
+O `===` compara sem converter: `"1234" === 1234` é `false`, porque um é string e
+o outro é número. Já o `==` converte antes, então `"1234" == 1234` é `true` —
+e também `"" == 0` é `true`, um dos casos mais confusos da linguagem. Por isso a
+recomendação é usar sempre `===`.
+
+Aqui o `===` é essencial: `prompt()` sempre devolve string, e a comparação
+estrita garante que a senha seja exatamente o texto `"1234"`.
+
+### Observação de segurança
+
+Este login é **client-side** e serve apenas para praticar condicionais: as
+credenciais estão no código-fonte, visíveis para qualquer pessoa que abra o
+DevTools. Em um sistema real a verificação ocorre no servidor, a senha é
+armazenada como *hash* e nunca chega ao navegador — como discutido no
+Exercício 2. Outro detalhe: a mensagem de erro não deve informar qual dos dois
+campos está errado, pois isso ajudaria um atacante a descobrir usuários válidos.
+O diagnóstico campo a campo aparece no console apenas por ser um exercício.

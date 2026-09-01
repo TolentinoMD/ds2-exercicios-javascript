@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login simples</title>
+  <link rel="stylesheet" href="css/Exercicio9.css">
+</head>
+<body>
+<main>
+
+  <header class="cabecalho">
+    <h1>Login simples</h1>
+    <p class="subtitulo">Desenvolvimento para Servidores II &middot; Exercício 9</p>
+    <a href="index.html">Voltar para a página principal</a>
+  </header>
+
+  <section class="instrucoes">
+    <h2>Como executar</h2>
+    <ol>
+      <li>Pressione <kbd>F12</kbd> e abra a aba <strong>Console</strong>.</li>
+      <li>Clique em <strong>Fazer login</strong> e informe usuário e senha.</li>
+      <li>Credenciais válidas: <code>admin</code> / <code>1234</code>.</li>
+    </ol>
+    <button type="button" id="btnIniciar" class="botao-demo">Fazer login</button>
+  </section>
+
+  <section class="aviso">
+    <h2>Aviso importante</h2>
+    <p>
+      Este login existe apenas para praticar estruturas condicionais. Ele é
+      <strong>client-side</strong>: as credenciais estão no código-fonte,
+      visíveis para qualquer pessoa que abra o DevTools. Em um sistema real, a
+      verificação acontece no servidor, a senha é armazenada como
+      <em>hash</em> e nunca chega ao navegador. Veja o Exercício 2.
+    </p>
+  </section>
+
+  <section>
+    <h2>Resultado</h2>
+    <div class="painel" id="painel" data-estado="aguardando">
+      <p class="icone" id="icone">?</p>
+      <p class="mensagem" id="mensagem">Aguardando tentativa de login…</p>
+      <p class="detalhe" id="detalhe">O resultado aparece aqui e também no console.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Atribuição (<code>=</code>) e comparações (<code>==</code> e <code>===</code>)</h2>
+    <div class="tabela-rolagem">
+      <table class="dados">
+        <thead>
+          <tr>
+            <th>Operador</th>
+            <th>Nome</th>
+            <th>O que faz</th>
+            <th>Exemplo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row" class="mono">=</th>
+            <td>Atribuição</td>
+            <td>Coloca um valor dentro de uma variável e devolve esse valor.</td>
+            <td class="mono">usuario = "admin"</td>
+          </tr>
+          <tr>
+            <th scope="row" class="mono">==</th>
+            <td>Igualdade solta</td>
+            <td>Compara apenas o valor, convertendo tipos antes (coerção).</td>
+            <td class="mono">"1234" == 1234 &rarr; true</td>
+          </tr>
+          <tr>
+            <th scope="row" class="mono">===</th>
+            <td>Igualdade estrita</td>
+            <td>Compara valor <em>e</em> tipo, sem nenhuma conversão.</td>
+            <td class="mono">"1234" === 1234 &rarr; false</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>Comparações executadas de verdade</h2>
+    <p class="apoio">
+      Cada linha abaixo é avaliada pelo JavaScript no momento em que a página
+      carrega — os resultados não estão escritos à mão no HTML.
+    </p>
+    <div class="tabela-rolagem">
+      <table class="dados">
+        <thead>
+          <tr>
+            <th>Expressão</th>
+            <th>Resultado</th>
+            <th>Por quê</th>
+          </tr>
+        </thead>
+        <tbody id="corpoComparacoes">
+          <!-- Preenchido por js/exercicio07.js -->
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>O bug clássico do <code>=</code> dentro do <code>if</code></h2>
+    <p class="apoio">
+      Trocar <code>===</code> por <code>=</code> em uma condição não gera erro:
+      o código roda e sempre entra no <code>if</code>. Clique para ver.
+    </p>
+    <button type="button" id="btnBug" class="botao-demo secundario">Demonstrar o bug</button>
+    <p class="saida" id="saidaBug">Nenhuma demonstração executada ainda.</p>
+  </section>
+
+  <footer>
+    Notas de aulas Desenvolvimento para Servidores II
+    Professor Marcos Costa
+  </footer> 
+
+</main>
+
+<script src="js/exercicio9.js"></script>
+</body>
+</html>
