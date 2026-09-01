@@ -329,3 +329,18 @@ armazenada como *hash* e nunca chega ao navegador — como discutido no
 Exercício 2. Outro detalhe: a mensagem de erro não deve informar qual dos dois
 campos está errado, pois isso ajudaria um atacante a descobrir usuários válidos.
 O diagnóstico campo a campo aparece no console apenas por ser um exercício.
+
+## Exercício 10 — Tabuada com `for`
+
+Página: `Exercicio10.html` (com `css/Exercicio10.css` e `js/exercicio08.js`).
+
+O programa solicita um número inteiro e usa um laço `for` para exibir a tabuada
+de 1 a 10:
+
+```js
+for (let i = 1; i <= 10; i++) {
+  console.log(`${numero} x ${i} = ${numero * i}`);
+}
+```
+
+Saída para o número 5:

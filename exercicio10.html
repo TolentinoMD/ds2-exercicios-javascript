@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tabuada com for</title>
+  <link rel="stylesheet" href="css/Exercicio10.css">
+</head>
+<body>
+<main>
+
+  <header class="cabecalho">
+    <h1>Tabuada com <code>for</code></h1>
+    <p class="subtitulo">Desenvolvimento para Servidores II - Exercício 10</p>
+    <a href="index.html">Voltar para a página principal</a>
+  </header>
+
+  <section class="instrucoes">
+    <h2>Como executar</h2>
+    <ol>
+      <li>Pressione <kbd>F12</kbd> e abra a aba <strong>Console</strong>.</li>
+      <li>Clique em <strong>Gerar tabuada</strong> e informe um número inteiro.</li>
+      <li>Teste também entradas inválidas: vazio, texto ou número quebrado.</li>
+    </ol>
+    <button type="button" id="btnIniciar" class="botao-demo">Gerar tabuada</button>
+  </section>
+
+  <section>
+    <h2>Resultado</h2>
+    <div class="painel" id="painel" data-estado="aguardando">
+      <p class="titulo-tabuada" id="tituloTabuada">Aguardando um número…</p>
+      <div class="terminal" id="terminal">
+        <p class="aguardando">A tabuada aparece aqui e também no console.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Anatomia do laço <code>for</code></h2>
+    <div class="tabela-rolagem">
+      <table class="dados">
+        <thead>
+          <tr>
+            <th>Parte</th>
+            <th>Código</th>
+            <th>Quando executa</th>
+            <th>Função</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Inicialização</th>
+            <td class="mono">let i = 1</td>
+            <td>Uma única vez, antes de tudo</td>
+            <td>Cria o contador e define o valor de partida.</td>
+          </tr>
+          <tr>
+            <th scope="row">Condição</th>
+            <td class="mono">i &lt;= 10</td>
+            <td>Antes de cada volta</td>
+            <td>Se for <code>true</code>, o corpo roda; se for <code>false</code>, o laço termina.</td>
+          </tr>
+          <tr>
+            <th scope="row">Incremento</th>
+            <td class="mono">i++</td>
+            <td>Ao final de cada volta</td>
+            <td>Avança o contador. Sem ele, o laço seria infinito.</td>
+          </tr>
+          <tr>
+            <th scope="row">Corpo</th>
+            <td class="mono">console.log(...)</td>
+            <td>A cada volta, enquanto a condição for verdadeira</td>
+            <td>Monta e exibe uma linha da tabuada.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="apoio">
+      O contador começa em <code>1</code> e vai até <code>10</code> porque a
+      tabuada é de 1 a 10 — diferente de um laço sobre array, que costuma
+      começar em <code>0</code>.
+    </p>
+  </section>
+
+  <section>
+    <h2>Bateria de testes</h2>
+    <p class="apoio">
+      Verifica a validação da entrada com valores prontos, incluindo os casos
+      que devem ser rejeitados.
+    </p>
+    <button type="button" id="btnTestes" class="botao-demo secundario">Rodar testes</button>
+    <div class="tabela-rolagem">
+      <table class="dados">
+        <thead>
+          <tr>
+            <th>Entrada</th>
+            <th>Resultado</th>
+            <th>Situação do teste</th>
+          </tr>
+        </thead>
+        <tbody id="corpoTestes">
+          <tr class="vazio"><td colspan="3">Nenhum teste executado ainda.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <footer>
+    Notas de aulas Desenvolvimento para Servidores II
+    Professor Marcos Costa
+  </footer> 
+
+</main>
+
+<script src="js/exercicio10.js"></script>
+</body>
+</html>
