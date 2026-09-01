@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login com limite de tentativas</title>
+  <link rel="stylesheet" href="css/Exercicio12.css">
+</head>
+<body>
+<main>
+
+  <header class="cabecalho">
+    <h1>Login com limite de tentativas</h1>
+    <p class="subtitulo">Desenvolvimento para Servidores II - Exercício 12</p>
+    <a href="index.html">Voltar para a página principal</a>
+  </header>
+
+  <section class="instrucoes">
+    <h2>Como executar</h2>
+    <ol>
+      <li>Pressione <kbd>F12</kbd> e abra a aba <strong>Console</strong>.</li>
+      <li>Clique em <strong>Fazer login</strong>. São permitidas até três tentativas.</li>
+      <li>Credenciais válidas: <code>admin</code> / <code>1234</code>.</li>
+      <li>Erre de propósito três vezes para ver o bloqueio.</li>
+    </ol>
+    <button type="button" id="btnIniciar" class="botao-demo">Fazer login</button>
+    <button type="button" id="btnReiniciar" class="botao-demo secundario">Reiniciar</button>
+  </section>
+
+  <section class="aviso">
+    <h2>Aviso importante</h2>
+    <p>
+      Como no Exercício 9, este login é <strong>client-side</strong> e serve
+      apenas para praticar laços e condicionais. O bloqueio existe somente na
+      memória da página: basta recarregar para zerar o contador. Em um sistema
+      real, a contagem de tentativas fica no servidor, associada à conta ou ao
+      IP, e costuma vir acompanhada de espera progressiva entre as tentativas.
+    </p>
+  </section>
+
+  <section>
+    <h2>Situação atual</h2>
+    <div class="painel" id="painel" data-estado="aguardando">
+      <p class="icone" id="icone">?</p>
+      <p class="mensagem" id="mensagem">Aguardando tentativa de login…</p>
+      <p class="detalhe" id="detalhe">O resultado aparece aqui e também no console.</p>
+
+      <div class="marcadores" id="marcadores">
+        <span class="marcador" data-tentativa="1"></span>
+        <span class="marcador" data-tentativa="2"></span>
+        <span class="marcador" data-tentativa="3"></span>
+      </div>
+      <p class="legenda">Tentativas: cada marcador representa uma das três chances.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Histórico de tentativas</h2>
+    <div class="terminal" id="terminal">
+      <p class="aguardando">Nenhuma tentativa registrada ainda.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Estrutura do programa</h2>
+    <div class="tabela-rolagem">
+      <table class="dados">
+        <thead>
+          <tr>
+            <th>Elemento</th>
+            <th>Código</th>
+            <th>Papel</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Repetição</th>
+            <td class="mono">while (tentativa &lt;= 3)</td>
+            <td>Repete a solicitação enquanto houver tentativas disponíveis.</td>
+          </tr>
+          <tr>
+            <th scope="row">Condicional</th>
+            <td class="mono">if (usuario === ... &amp;&amp; senha === ...)</td>
+            <td>Decide entre acesso permitido e nova tentativa.</td>
+          </tr>
+          <tr>
+            <th scope="row">Saída antecipada</th>
+            <td class="mono">break</td>
+            <td>Encerra o laço imediatamente quando o acesso é permitido.</td>
+          </tr>
+          <tr>
+            <th scope="row">Sinalizador</th>
+            <td class="mono">let autenticado = false</td>
+            <td>Guarda o motivo da saída do laço, para decidir a mensagem final.</td>
+          </tr>
+          <tr>
+            <th scope="row">Contador</th>
+            <td class="mono">tentativa++</td>
+            <td>Avança a contagem e garante que o laço termine.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="apoio">
+      O sinalizador é necessário porque o laço pode terminar de duas formas
+      diferentes: por acerto (<code>break</code>) ou por esgotamento das
+      tentativas. Sem ele, não haveria como distinguir os dois casos após o
+      <code>while</code>.
+    </p>
+  </section>
+
+  <footer>
+    Notas de aulas Desenvolvimento para Servidores II
+    Professor Marcos Costa
+  </footer> 
+
+</main>
+
+<script src="js/exercicio12.js"></script>
+</body>
+</html>

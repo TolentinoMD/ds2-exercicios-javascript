@@ -390,3 +390,41 @@ simulação com essa sequência exatamente para demonstrar o problema.
 `continue` volta ao início do laço sem executar o resto do corpo, usado para
 descartar entradas inválidas sem contá-las. `break` sai do laço de vez, usado
 quando a sentinela aparece.
+
+## Exercício 12 — Login com limite de tentativas
+
+Página: `Exercicio12.html` (com `css/Exercicio12.css` e `js/exercicio10.js`).
+
+Nova versão do login do Exercício 9, agora com no máximo três tentativas.
+
+| Elemento | Código | Papel |
+|---|---|---|
+| Repetição | `while (tentativa <= 3)` | Repete enquanto houver tentativas |
+| Condicional | `if (usuario === ... && senha === ...)` | Decide entre acerto e erro |
+| Saída antecipada | `break` | Encerra o laço quando o acesso é permitido |
+| Sinalizador | `let autenticado = false` | Guarda o motivo da saída do laço |
+| Contador | `tentativa++` | Avança a contagem e garante o fim do laço |
+
+### Por que o sinalizador é necessário
+
+O laço pode terminar de duas formas: por `break` (o usuário acertou) ou porque a
+condição ficou falsa (as tentativas se esgotaram). Depois do `while` não há como
+distinguir os dois casos apenas olhando o contador — em ambos ele vale 3. A
+variável `autenticado` guarda essa informação e é o que permite escolher entre
+`Acesso permitido` e `Acesso bloqueado`.
+
+### Cálculo das tentativas restantes
+
+`MAX_TENTATIVAS - tentativa` devolve 2 na primeira tentativa, 1 na segunda e 0
+na terceira. Como a mensagem "restam 0 tentativas" não faz sentido, um `if`
+separa os dois textos: nas duas primeiras falhas o programa informa quantas
+chances sobraram; na terceira, apenas registra o erro e o laço termina,
+resultando no bloqueio.
+
+### Observação de segurança
+
+Como no Exercício 9, este login é **client-side**: as credenciais estão no
+código-fonte e o bloqueio existe apenas na memória da página, sumindo ao
+recarregar. Em um sistema real a contagem de tentativas fica no servidor,
+associada à conta ou ao IP, geralmente com espera progressiva entre as
+tentativas para dificultar ataques de força bruta.
