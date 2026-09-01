@@ -1,25 +1,138 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercícios de JavaScript — Desenvolvimento para Servidores II</title>
+  <link rel="stylesheet" href="css/Style.css">
 </head>
 <body>
-    <a href="exercicio1.html">Exercício 1</a>
-    <a href="exercicio2.html">Exercício 2</a>
-    <a href="exercicio3.html">Exercício 3</a>
-    <a href="exercicio4.html">Exercício 4</a>
-    <a href="exercicio5.html">Exercício 5</a>
-    <a href="exercicio6.html">Exercício 6</a>
-    <a href="exercicio7.html">Exercício 7</a>
-    <a href="exercicio8.html">Exercício 8</a>
-    <a href="exercicio9.html">Exercício 9</a>
-    <a href="exercicio10.html">Exercício 10</a>
-    <a href="exercicio11.html">Exercício 11</a>
-    <a href="exercicio12.html">Exercício 12</a>
-    <a href="exercicio13.html">Exercício 13</a>
-    <a href="dessafio_final.html">Desafio Final</a>
-    
+<main>
+
+  <header class="cabecalho">
+    <p class="etiqueta">Ensino Superior &middot; Sistemas para Internet</p>
+    <h1>Exercícios de JavaScript</h1>
+    <p class="subtitulo">Desenvolvimento para Servidores II</p>
+    <p class="subtitulo">Aluno: Michael Douglas Alves Tolentino</p>
+    <p class="descricao">
+      Atividades práticas da seção 6.17.4 das notas de aula. Cada página abre um
+      exercício com sua explicação e execução no console.
+    </p>
+  </header>
+
+  <nav class="grade" aria-label="Lista de exercícios">
+
+    <a class="cartao" href="exercicio1.html">
+      <span class="numero">01</span>
+      <span class="titulo">Página estática e fluxo de uma requisição</span>
+      <span class="descricao-cartao">Definições, exemplos reais e o caminho navegador → servidor → resposta.</span>
+      <span class="tema">Fundamentos</span>
+    </a>
+
+    <a class="cartao" href="exercicio2.html">
+      <span class="numero">02</span>
+      <span class="titulo">Client-side e server-side</span>
+      <span class="descricao-cartao">Tabela comparativa e classificação de seis operações.</span>
+      <span class="tema">Fundamentos</span>
+    </a>
+
+    <a class="cartao" href="exercicio3.html">
+      <span class="numero">03</span>
+      <span class="titulo">Primeiro script e diagnóstico pelo console</span>
+      <span class="descricao-cartao">Saída no console e erro provocado com <code>Console.log</code>.</span>
+      <span class="tema">Console</span>
+    </a>
+
+    <a class="cartao" href="exercicio4.html">
+      <span class="numero">04</span>
+      <span class="titulo">Variáveis e tipos de dados</span>
+      <span class="descricao-cartao"><code>const</code>, <code>let</code> e verificação com <code>typeof</code>.</span>
+      <span class="tema">Variáveis</span>
+    </a>
+
+    <a class="cartao" href="exercicio5.html">
+      <span class="numero">05</span>
+      <span class="titulo">Entrada de dados e concatenação</span>
+      <span class="descricao-cartao">Operador <code>+</code> e template string comparados.</span>
+      <span class="tema">Variáveis</span>
+    </a>
+
+    <a class="cartao" href="exercicio6.html">
+      <span class="numero">06</span>
+      <span class="titulo">Conversão de dados e cálculo de idade</span>
+      <span class="descricao-cartao">Por que <code>20 + 5</code> pode resultar em <code>205</code>.</span>
+      <span class="tema">Variáveis</span>
+    </a>
+
+    <a class="cartao" href="exercicio7.html">
+      <span class="numero">07</span>
+      <span class="titulo">Classificação do voto</span>
+      <span class="descricao-cartao">Faixas etárias e rejeição de entradas inválidas.</span>
+      <span class="tema">Condicionais</span>
+    </a>
+
+    <a class="cartao" href="exercicio8.html">
+      <span class="numero">08</span>
+      <span class="titulo">Sistema acadêmico de notas</span>
+      <span class="descricao-cartao">Média com uma casa decimal e situação final.</span>
+      <span class="tema">Condicionais</span>
+    </a>
+
+    <a class="cartao" href="exercicio9.html">
+      <span class="numero">09</span>
+      <span class="titulo">Login simples</span>
+      <span class="descricao-cartao">Comparação estrita e a diferença entre <code>=</code> e <code>===</code>.</span>
+      <span class="tema">Condicionais</span>
+    </a>
+
+    <a class="cartao" href="exercicio10.html">
+      <span class="numero">10</span>
+      <span class="titulo">Tabuada com <code>for</code></span>
+      <span class="descricao-cartao">Laço contado de 1 a 10 e validação de inteiro.</span>
+      <span class="tema">Repetição</span>
+    </a>
+
+    <a class="cartao" href="exercicio11.html">
+      <span class="numero">11</span>
+      <span class="titulo">Entrada contínua com <code>while</code></span>
+      <span class="descricao-cartao">Sentinela, soma, média, maior e menor valor.</span>
+      <span class="tema">Repetição</span>
+    </a>
+
+    <a class="cartao" href="exercicio12.html">
+      <span class="numero">12</span>
+      <span class="titulo">Login com limite de tentativas</span>
+      <span class="descricao-cartao">Três chances, contador e bloqueio de acesso.</span>
+      <span class="tema">Repetição</span>
+    </a>
+
+    <a class="cartao" href="exercicio13.html">
+      <span class="numero">13</span>
+      <span class="titulo">Funções, parâmetros e retorno</span>
+      <span class="descricao-cartao">Quatro funções reutilizáveis e composição de retornos.</span>
+      <span class="tema">Funções</span>
+    </a>
+
+    <a class="cartao destaque" href="dessafio_final.html">
+      <span class="numero">★</span>
+      <span class="titulo">Desafio final — Sistema acadêmico</span>
+      <span class="descricao-cartao">Cadastro de vários alunos integrando tudo o que foi visto.</span>
+      <span class="tema">Integrador</span>
+    </a>
+
+  </nav>
+
+  <footer>
+    <p>
+      Repositório <code>ds2-exercicios-javascript</code><br>
+      Notas de aulas &ndash; Desenvolvimento para Servidores II<br>
+      Professor Marcos Costa
+    </p>
+    <p class="dica">
+      Abra o console com <kbd>F12</kbd> antes de executar os exercícios.
+    </p>
+  </footer>
+
+</main>
 </body>
 </html>

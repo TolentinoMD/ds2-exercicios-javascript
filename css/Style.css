@@ -1,0 +1,205 @@
+:root {
+  --tinta: #1c1c1e;
+  --papel: #faf9f7;
+  --linha: #d8d4cd;
+  --suave: #f2f0ec;
+  --apoio: #6b6862;
+  --destaque: #2f5d50;
+  --dourado: #8a5a1e;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 3rem 1.25rem 4rem;
+  background: var(--papel);
+  color: var(--tinta);
+  font-family: Georgia, "Times New Roman", serif;
+  line-height: 1.6;
+}
+
+main { max-width: 980px; margin: 0 auto; }
+
+/* ---------- Cabeçalho ---------- */
+
+.cabecalho {
+  text-align: center;
+  padding-bottom: 2.5rem;
+  margin-bottom: 2.5rem;
+  border-bottom: 1px solid var(--linha);
+}
+
+.etiqueta {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: .72rem;
+  text-transform: uppercase;
+  letter-spacing: .16em;
+  color: var(--apoio);
+  margin: 0 0 .8rem;
+}
+
+.cabecalho h1 {
+  font-size: 2.6rem;
+  line-height: 1.15;
+  margin: 0 0 .4rem;
+  letter-spacing: -.02em;
+}
+
+.subtitulo {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: .84rem;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  color: var(--destaque);
+  margin: 0 0 1.2rem;
+}
+
+.descricao {
+  max-width: 34rem;
+  margin: 0 auto;
+  font-size: 1rem;
+  color: var(--apoio);
+}
+
+/* ---------- Grade de cartões ---------- */
+
+.grade {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  gap: 1rem;
+}
+
+.cartao {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding: 1.3rem 1.3rem 1.1rem;
+  border: 1px solid var(--linha);
+  border-radius: 6px;
+  background: #fff;
+  text-decoration: none;
+  color: inherit;
+  transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+}
+
+.cartao:hover,
+.cartao:focus-visible {
+  transform: translateY(-3px);
+  border-color: var(--destaque);
+  box-shadow: 0 6px 18px rgba(28, 28, 30, .08);
+  outline: none;
+}
+
+.cartao:focus-visible { outline: 2px solid var(--destaque); outline-offset: 2px; }
+
+.numero {
+  font-family: Consolas, "Courier New", monospace;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--linha);
+  line-height: 1;
+  margin-bottom: .7rem;
+  transition: color .15s ease;
+}
+
+.cartao:hover .numero { color: var(--destaque); }
+
+.titulo {
+  font-size: 1.05rem;
+  font-weight: bold;
+  line-height: 1.35;
+  margin-bottom: .45rem;
+}
+
+.descricao-cartao {
+  font-size: .89rem;
+  color: var(--apoio);
+  flex-grow: 1;
+  margin-bottom: 1rem;
+}
+
+.tema {
+  align-self: flex-start;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: .67rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: .09em;
+  color: var(--apoio);
+  background: var(--suave);
+  padding: .22rem .6rem;
+  border-radius: 3px;
+}
+
+/* Cartão do desafio final */
+
+.cartao.destaque {
+  border-color: var(--dourado);
+  background: linear-gradient(#fffdf8, #fff);
+  grid-column: 1 / -1;
+}
+
+.cartao.destaque:hover { border-color: var(--dourado); }
+
+.cartao.destaque .numero { color: var(--dourado); font-size: 1.7rem; }
+.cartao.destaque .tema { background: #f6ecdc; color: var(--dourado); }
+
+/* Código dentro dos cartões */
+
+.cartao code {
+  font-family: Consolas, "Courier New", monospace;
+  font-size: .88em;
+  background: var(--suave);
+  padding: .05rem .3rem;
+  border-radius: 3px;
+}
+
+/* ---------- Rodapé ---------- */
+
+footer {
+  margin-top: 3.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--linha);
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: .8rem;
+  color: var(--apoio);
+  line-height: 1.8;
+}
+
+footer p { margin: 0 0 .8rem; }
+
+footer code {
+  font-family: Consolas, "Courier New", monospace;
+  background: var(--suave);
+  padding: .1rem .35rem;
+  border-radius: 3px;
+}
+
+.dica { font-style: italic; }
+
+kbd {
+  font-family: Consolas, "Courier New", monospace;
+  font-size: .82em;
+  font-style: normal;
+  background: #fff;
+  border: 1px solid var(--linha);
+  border-bottom-width: 2px;
+  border-radius: 4px;
+  padding: .1rem .4rem;
+}
+
+/* ---------- Responsivo ---------- */
+
+@media (max-width: 620px) {
+  body { padding: 2rem 1rem 3rem; }
+  .cabecalho h1 { font-size: 2rem; }
+  .cabecalho { padding-bottom: 1.8rem; margin-bottom: 1.8rem; }
+  .grade { grid-template-columns: 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cartao { transition: none; }
+  .cartao:hover { transform: none; }
+}

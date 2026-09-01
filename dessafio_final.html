@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Desafio final — Sistema acadêmico</title>
+  <link rel="stylesheet" href="css/desafio_final.css">
+</head>
+<body>
+<main>
+
+  <header class="cabecalho">
+    <h1>Sistema acadêmico</h1>
+    <p class="subtitulo">Desenvolvimento para Servidores II - Desafio final integrador</p>
+    <a href="index.html">Voltar para a página principal</a>
+  </header>
+
+  <section class="instrucoes">
+    <h2>Como executar</h2>
+    <ol>
+      <li>Pressione <kbd>F12</kbd> e abra a aba <strong>Console</strong>.</li>
+      <li>Clique em <strong>Iniciar cadastro</strong>.</li>
+      <li>Informe nome, curso e as duas notas. Notas fora de 0 a 10 são recusadas e pedidas de novo.</li>
+      <li>Ao final de cada aluno, responda <code>s</code> para cadastrar outro ou <code>n</code> para encerrar.</li>
+    </ol>
+    <button type="button" id="btnIniciar" class="botao-demo">Iniciar cadastro</button>
+    <button type="button" id="btnLimpar" class="botao-demo secundario">Limpar lista</button>
+  </section>
+
+  <section>
+    <h2>Resumo da turma</h2>
+    <div class="painel" id="painel" data-estado="vazio">
+      <p class="estado" id="estadoTexto">Nenhum aluno cadastrado ainda.</p>
+
+      <div class="grade">
+        <div class="celula destaque">
+          <span class="celula-rotulo">Total de alunos</span>
+          <span class="celula-valor" id="valorTotal">0</span>
+        </div>
+        <div class="celula">
+          <span class="celula-rotulo">Aprovados</span>
+          <span class="celula-valor aprovado" id="valorAprovados">0</span>
+        </div>
+        <div class="celula">
+          <span class="celula-rotulo">Recuperação</span>
+          <span class="celula-valor recuperacao" id="valorRecuperacao">0</span>
+        </div>
+        <div class="celula">
+          <span class="celula-rotulo">Reprovados</span>
+          <span class="celula-valor reprovado" id="valorReprovados">0</span>
+        </div>
+        <div class="celula">
+          <span class="celula-rotulo">Média da turma</span>
+          <span class="celula-valor" id="valorMediaTurma">—</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Fichas cadastradas</h2>
+    <div class="fichas" id="fichas">
+      <p class="vazio">As fichas aparecem aqui e também no console.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Funções que compõem o sistema</h2>
+    <div class="tabela-rolagem">
+      <table class="dados">
+        <thead>
+          <tr>
+            <th>Função</th>
+            <th>Retorno</th>
+            <th>Responsabilidade</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row" class="mono">lerTexto(mensagem)</th>
+            <td class="mono">string | null</td>
+            <td>Pede um texto e insiste enquanto vier vazio.</td>
+          </tr>
+          <tr>
+            <th scope="row" class="mono">lerNota(mensagem)</th>
+            <td class="mono">number | null</td>
+            <td>Pede uma nota e insiste enquanto não estiver entre 0 e 10.</td>
+          </tr>
+          <tr>
+            <th scope="row" class="mono">calcularMedia(n1, n2)</th>
+            <td class="mono">number</td>
+            <td>Devolve a média aritmética das duas notas.</td>
+          </tr>
+          <tr>
+            <th scope="row" class="mono">classificarSituacao(media)</th>
+            <td class="mono">string</td>
+            <td>Devolve <code>Aprovado</code>, <code>Recuperação</code> ou <code>Reprovado</code>.</td>
+          </tr>
+          <tr>
+            <th scope="row" class="mono">exibirFicha(aluno)</th>
+            <td class="mono">undefined</td>
+            <td>Imprime a ficha formatada no console.</td>
+          </tr>
+          <tr>
+            <th scope="row" class="mono">desejaContinuar()</th>
+            <td class="mono">boolean</td>
+            <td>Pergunta se há outro aluno e interpreta a resposta.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="apoio">
+      <code>calcularMedia()</code> e <code>classificarSituacao()</code> são as
+      mesmas do Exercício 13, reaproveitadas sem alteração.
+    </p>
+  </section>
+
+  <footer>
+    Notas de aulas Desenvolvimento para Servidores II
+    Professor Marcos Costa
+  </footer> 
+
+</main>
+
+<script src="js/desafio_final.js"></script>
+</body>
+</html>

@@ -473,3 +473,48 @@ Essas mesmas funções são reaproveitadas sem alteração no desafio final — 
 concreto de organizar os cálculos em funções em vez de repetir a lógica em cada
 arquivo.
 
+## Desafio final integrador — Sistema acadêmico
+
+Página: `DesafioFinal.html` (com `css/DesafioFinal.css` e `js/desafio-final.js`).
+
+Sistema executado no navegador que cadastra vários alunos em sequência. Para
+cada um: solicita nome e curso, pede duas notas validadas entre 0 e 10, calcula
+a média por meio de uma função, classifica a situação por meio de outra, exibe a
+ficha completa no console e pergunta se há outro aluno. Ao encerrar, apresenta o
+total cadastrado.
+
+| Função | Retorno | Responsabilidade |
+|---|---|---|
+| `lerTexto(mensagem)` | `string \| null` | Pede um texto e insiste enquanto vier vazio |
+| `lerNota(mensagem)` | `number \| null` | Pede uma nota e insiste enquanto não estiver entre 0 e 10 |
+| `calcularMedia(n1, n2)` | `number` | Devolve a média aritmética |
+| `classificarSituacao(media)` | `string` | `Aprovado`, `Recuperação` ou `Reprovado` |
+| `exibirFicha(aluno)` | `undefined` | Imprime a ficha formatada no console |
+| `desejaContinuar()` | `boolean` | Pergunta se há outro aluno e interpreta a resposta |
+
+### Decisões de implementação
+
+**Reaproveitamento.** `calcularMedia()` e `classificarSituacao()` são as mesmas
+do Exercício 13, sem nenhuma alteração. Isso só foi possível porque elas apenas
+recebem parâmetros e retornam valores, sem depender de `prompt`, `console` ou
+DOM — o ponto discutido naquele exercício.
+
+**Validação com laço, não com aborto.** `lerNota()` usa um `while` interno que
+insiste até receber um valor válido, em vez de cancelar o cadastro. Um erro de
+digitação não obriga o usuário a recomeçar tudo.
+
+**Cancelamento.** Se o usuário clicar em Cancelar, `prompt()` devolve `null`. As
+funções propagam esse `null` e o laço principal encerra com `break`, evitando
+gravar um aluno pela metade.
+
+**Estado acumulado.** O array `alunos` é declarado fora do laço, por isso
+sobrevive a cada volta. É ele que permite contar o total ao final e calcular as
+estatísticas da turma.
+
+**`alunos.length = 0` em vez de `alunos = []`.** Como a lista foi declarada com
+`const`, a referência não pode ser reatribuída, mas o conteúdo pode ser
+alterado — exatamente o ponto levantado no Exercício 4 sobre `const` significar
+"não reatribuível" e não "imutável".
+
+**Arredondamento só na exibição.** Como no Exercício 8, `toFixed(1)` é aplicado
+apenas na saída; a classificação usa o valor completo da média.
