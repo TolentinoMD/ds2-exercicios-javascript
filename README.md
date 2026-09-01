@@ -344,3 +344,49 @@ for (let i = 1; i <= 10; i++) {
 ```
 
 Saída para o número 5:
+
+## Exercício 11 — Entrada contínua com `while`
+
+Página: `Exercicio11.html` (com `css/Exercicio11.css` e `js/exercicio09.js`).
+
+O programa solicita números continuamente até que o usuário digite `0` e, ao
+final, exibe quantidade, soma, média, maior e menor valor.
+
+### Por que `while` e não `for`
+
+| Aspecto | `for` | `while` |
+|---|---|---|
+| Nº de repetições | Conhecido antes de começar | Desconhecido: depende da execução |
+| Critério de parada | Um contador atinge o limite | Um evento ocorre (digitar `0`) |
+| Neste exercício | Não serve | Adequado |
+
+O valor `0` é uma **sentinela**: um marcador que sinaliza o fim da entrada. Como
+é controle e não dado, ele encerra o laço com `break` **antes** de ser somado ou
+contado, e por isso não aparece nas estatísticas.
+
+### Tratamento do primeiro valor igual a zero
+
+Se o usuário digitar `0` logo de início, o array de números fica vazio. Sem
+tratamento, a média seria `0 / 0`, que resulta em `NaN`, e maior e menor ficariam
+indefinidos. A função `calcularEstatisticas()` verifica `length === 0` antes de
+qualquer cálculo e devolve um resultado próprio para esse caso, exibindo
+"Nenhum número foi digitado além do zero" e quantidade `0`.
+
+### Inicialização de maior e menor
+
+`maior` e `menor` partem de `numeros[0]`, e não de `0`:
+
+```js
+let maior = numeros[0];
+let menor = numeros[0];
+```
+
+Se partissem de zero, uma sequência só com negativos (`-8, -2, -15`) devolveria
+`0` como maior — valor que o usuário nunca digitou. A página tem um botão de
+simulação com essa sequência exatamente para demonstrar o problema.
+
+### `continue` e `break`
+
+`continue` volta ao início do laço sem executar o resto do corpo, usado para
+descartar entradas inválidas sem contá-las. `break` sai do laço de vez, usado
+quando a sentinela aparece.

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Entrada contínua com while</title>
+  <link rel="stylesheet" href="css/Exercicio11.css">
+</head>
+<body>
+<main>
+
+  <header class="cabecalho">
+    <h1>Entrada contínua com <code>while</code></h1>
+    <p class="subtitulo">Desenvolvimento para Servidores II &middot; Exercício 11</p>
+  </header>
+
+  <section class="instrucoes">
+    <h2>Como executar</h2>
+    <ol>
+      <li>Pressione <kbd>F12</kbd> e abra a aba <strong>Console</strong>.</li>
+      <li>Clique em <strong>Iniciar coleta</strong> e digite números um a um.</li>
+      <li>Digite <code>0</code> para encerrar. O zero não entra nas estatísticas.</li>
+      <li>Teste também digitar <code>0</code> logo no primeiro valor.</li>
+    </ol>
+    <button type="button" id="btnIniciar" class="botao-demo">Iniciar coleta</button>
+  </section>
+
+  <section>
+    <h2>Estatísticas</h2>
+    <div class="painel" id="painel" data-estado="aguardando">
+      <p class="estado" id="estadoTexto">Aguardando a coleta de números…</p>
+
+      <div class="grade">
+        <div class="celula">
+          <span class="celula-rotulo">Quantidade</span>
+          <span class="celula-valor" id="valorQuantidade">—</span>
+        </div>
+        <div class="celula">
+          <span class="celula-rotulo">Soma</span>
+          <span class="celula-valor" id="valorSoma">—</span>
+        </div>
+        <div class="celula destaque">
+          <span class="celula-rotulo">Média</span>
+          <span class="celula-valor" id="valorMedia">—</span>
+        </div>
+        <div class="celula">
+          <span class="celula-rotulo">Maior</span>
+          <span class="celula-valor" id="valorMaior">—</span>
+        </div>
+        <div class="celula">
+          <span class="celula-rotulo">Menor</span>
+          <span class="celula-valor" id="valorMenor">—</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Números digitados</h2>
+    <div class="terminal" id="terminal">
+      <p class="aguardando">A sequência aparece aqui e também no console.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Por que <code>while</code> e não <code>for</code></h2>
+    <div class="tabela-rolagem">
+      <table class="dados">
+        <thead>
+          <tr>
+            <th>Aspecto</th>
+            <th><code>for</code></th>
+            <th><code>while</code></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Nº de repetições</th>
+            <td>Conhecido antes de começar (1 a 10, tamanho do array).</td>
+            <td>Desconhecido: depende de algo que acontece durante a execução.</td>
+          </tr>
+          <tr>
+            <th scope="row">Critério de parada</th>
+            <td>Um contador atinge o limite.</td>
+            <td>Um evento ocorre — aqui, o usuário digitar <code>0</code>.</td>
+          </tr>
+          <tr>
+            <th scope="row">Neste exercício</th>
+            <td>Não serve: não há como saber quantos números serão digitados.</td>
+            <td>Adequado: repete enquanto a sentinela não aparecer.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="apoio">
+      O valor que encerra o laço (<code>0</code>) é chamado de
+      <strong>sentinela</strong>. Ele sinaliza o fim da entrada e, por isso, não
+      é contabilizado junto com os dados.
+    </p>
+  </section>
+
+  <section>
+    <h2>Simulação com sequências prontas</h2>
+    <p class="apoio">
+      Executa o mesmo processamento sem precisar digitar, útil como evidência.
+      Repare no tratamento do caso em que o primeiro valor é zero.
+    </p>
+    <div class="botoes">
+      <button type="button" class="botao-demo secundario" data-sequencia="10,25,7,42,3,0">10, 25, 7, 42, 3, 0</button>
+      <button type="button" class="botao-demo secundario" data-sequencia="-8,-2,-15,0">-8, -2, -15, 0</button>
+      <button type="button" class="botao-demo secundario" data-sequencia="5,0">5, 0</button>
+      <button type="button" class="botao-demo secundario" data-sequencia="0">Apenas 0</button>
+    </div>
+  </section>
+
+  <footer>
+    Notas de aulas Desenvolvimento para Servidores II
+    Professor Marcos Costa
+  </footer> 
+
+</main>
+
+<script src="js/exercicio11.js"></script>
+</body>
+</html>
