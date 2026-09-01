@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Classificação do voto</title>
+  <link rel="stylesheet" href="css/Exercicio7.css">
+</head>
+<body>
+<main>
+
+  <header class="cabecalho">
+    <h1>Classificação do voto</h1>
+    <p class="subtitulo">Desenvolvimento para Servidores II - Exercício 7</p>
+    <a href="index.html">Voltar para a página principal</a>
+  </header>
+
+  <section class="instrucoes">
+    <h2>Como executar</h2>
+    <ol>
+      <li>Pressione <kbd>F12</kbd> e abra a aba <strong>Console</strong>.</li>
+      <li>Clique em <strong>Informar idade</strong> e digite um valor.</li>
+      <li>Teste também entradas inválidas: vazio, texto, número negativo.</li>
+    </ol>
+    <button type="button" id="btnIniciar" class="botao-demo">Informar idade</button>
+  </section>
+
+  <section>
+    <h2>Resultado</h2>
+    <div class="painel" id="painelResultado" data-estado="aguardando">
+      <p class="idade-lida" id="idadeLida">—</p>
+      <p class="classificacao" id="classificacao">Aguardando a idade…</p>
+      <p class="detalhe" id="detalhe">O resultado aparece aqui e também no console.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Regras aplicadas</h2>
+    <div class="tabela-rolagem">
+      <table class="dados">
+        <thead>
+          <tr>
+            <th>Faixa</th>
+            <th>Condição no código</th>
+            <th>Saída</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Entrada inválida</th>
+            <td class="mono">vazio, texto, negativo ou cancelado</td>
+            <td><span class="etiqueta invalida">Idade inválida</span></td>
+          </tr>
+          <tr>
+            <th scope="row">Menos de 16 anos</th>
+            <td class="mono">idade &lt; 16</td>
+            <td><span class="etiqueta nao-vota">Não pode votar</span></td>
+          </tr>
+          <tr>
+            <th scope="row">16 ou 17 anos</th>
+            <td class="mono">idade &lt; 18</td>
+            <td><span class="etiqueta opcional">Voto opcional</span></td>
+          </tr>
+          <tr>
+            <th scope="row">18 anos ou mais</th>
+            <td class="mono">demais casos</td>
+            <td><span class="etiqueta obrigatorio">Voto obrigatório</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="apoio">
+      A ordem das condições importa: como o <code>else if</code> só é avaliado
+      quando o anterior falha, ao chegar em <code>idade &lt; 18</code> já se sabe
+      que a idade é 16 ou mais. Não é preciso escrever
+      <code>idade &gt;= 16 &amp;&amp; idade &lt; 18</code>.
+    </p>
+  </section>
+
+  <section>
+    <h2>Bateria de testes</h2>
+    <p class="apoio">
+      Executa a mesma função com valores prontos, incluindo os casos de borda.
+      Útil como evidência de que a validação funciona.
+    </p>
+    <button type="button" id="btnTestes" class="botao-demo secundario">Rodar testes</button>
+    <div class="tabela-rolagem">
+      <table class="dados">
+        <thead>
+          <tr>
+            <th>Entrada</th>
+            <th>Saída obtida</th>
+            <th>Situação</th>
+          </tr>
+        </thead>
+        <tbody id="corpoTestes">
+          <tr class="vazio"><td colspan="3">Nenhum teste executado ainda.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <footer>
+    Notas de aulas Desenvolvimento para Servidores II
+    Professor Marcos Costa
+  </footer> 
+
+
+</main>
+
+<script src="js/exercicio7.js"></script>
+</body>
+</html>

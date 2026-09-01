@@ -1,47 +1,211 @@
-    body {
-      margin: 0;
-      padding: 2.5rem 1.25rem 4rem;
-      background: #faf9f7;
-      color: #1c1c1e;
-      font-family: Georgia, "Times New Roman", serif;
-      line-height: 1.65;
-    }
-    main { max-width: 780px; margin: 0 auto; }
-    h1 { font-size: 2.1rem; margin: 0 0 .25rem; }
-    .subtitulo {
-      font-family: Arial, sans-serif;
-      font-size: .8rem;
-      text-transform: uppercase;
-      letter-spacing: .14em;
-      color: #6b6862;
-      margin: 0 0 2.25rem;
-    }
-    h2 {
-      font-size: 1.25rem;
-      margin: 2.5rem 0 .75rem;
-      padding-bottom: .4rem;
-      border-bottom: 1px solid #d8d4cd;
-    }
-    h3 { font-size: 1rem; margin: 1.5rem 0 .4rem; }
-    code {
-      font-family: Consolas, monospace;
-      font-size: .88em;
-      background: #efece6;
-      padding: .1rem .35rem;
-      border-radius: 3px;
-    }
-    .exemplo {
-      border-left: 3px solid #2f5d50;
-      padding: .1rem 0 .1rem 1rem;
-      margin: .9rem 0;
-      background: #f2f0ec;
-    }
-    ol.fluxo li { margin-bottom: .55rem; }
-    footer {
-      margin-top: 3.5rem;
-      padding-top: 1rem;
-      border-top: 1px solid #d8d4cd;
-      font-family: Arial, sans-serif;
-      font-size: .82rem;
-      color: #6b6862;
-    }
+:root {
+  --tinta: #1c1c1e;
+  --papel: #faf9f7;
+  --linha: #d8d4cd;
+  --suave: #f2f0ec;
+  --apoio: #6b6862;
+  --ok: #2f5d50;
+  --erro: #a12c2c;
+  --alerta: #8a5a1e;
+  --neutro: #52525b;
+  --info: #1d5d9b;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 2.5rem 1.25rem 4rem;
+  background: var(--papel);
+  color: var(--tinta);
+  font-family: Georgia, "Times New Roman", serif;
+  line-height: 1.6;
+}
+
+main { max-width: 820px; margin: 0 auto; }
+
+.cabecalho h1 {
+  font-size: 2rem;
+  margin: 0 0 .25rem;
+  letter-spacing: -.02em;
+}
+
+.subtitulo {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: .8rem;
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  color: var(--apoio);
+  margin: 0 0 2.5rem;
+}
+
+h2 {
+  font-size: 1.2rem;
+  margin: 2.5rem 0 .75rem;
+  padding-bottom: .4rem;
+  border-bottom: 1px solid var(--linha);
+}
+
+.apoio { color: var(--apoio); font-size: .93rem; }
+
+code {
+  font-family: Consolas, "Courier New", monospace;
+  font-size: .88em;
+  background: #efece6;
+  padding: .1rem .35rem;
+  border-radius: 3px;
+}
+
+kbd {
+  font-family: Consolas, "Courier New", monospace;
+  font-size: .8em;
+  background: #fff;
+  border: 1px solid var(--linha);
+  border-bottom-width: 2px;
+  border-radius: 4px;
+  padding: .1rem .4rem;
+}
+
+.instrucoes ol { padding-left: 1.3rem; }
+.instrucoes li { margin-bottom: .4rem; }
+
+.botao-demo {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: .9rem;
+  padding: .6rem 1.1rem;
+  border: 1px solid var(--ok);
+  border-radius: 4px;
+  background: var(--ok);
+  color: #fff;
+  cursor: pointer;
+  margin: .5rem 0 1rem;
+}
+
+.botao-demo.secundario {
+  background: #fff;
+  color: var(--tinta);
+  border-color: var(--linha);
+}
+
+.botao-demo:hover { opacity: .9; }
+
+/* ---------- Painel de resultado ---------- */
+
+.painel {
+  border: 1px solid var(--linha);
+  border-left-width: 5px;
+  border-radius: 6px;
+  background: #fff;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.painel[data-estado="aguardando"]  { border-left-color: var(--linha); }
+.painel[data-estado="invalida"]    { border-left-color: var(--erro); }
+.painel[data-estado="nao-vota"]    { border-left-color: var(--neutro); }
+.painel[data-estado="opcional"]    { border-left-color: var(--alerta); }
+.painel[data-estado="obrigatorio"] { border-left-color: var(--ok); }
+
+.idade-lida {
+  font-family: Consolas, "Courier New", monospace;
+  font-size: 2.4rem;
+  font-weight: bold;
+  margin: 0;
+  color: var(--apoio);
+}
+
+.classificacao {
+  font-size: 1.35rem;
+  font-weight: bold;
+  margin: .3rem 0 .5rem;
+}
+
+.painel[data-estado="aguardando"]  .classificacao { color: var(--apoio); font-weight: normal; font-style: italic; }
+.painel[data-estado="invalida"]    .classificacao { color: var(--erro); }
+.painel[data-estado="nao-vota"]    .classificacao { color: var(--neutro); }
+.painel[data-estado="opcional"]    .classificacao { color: var(--alerta); }
+.painel[data-estado="obrigatorio"] .classificacao { color: var(--ok); }
+
+.detalhe { font-size: .92rem; color: var(--apoio); margin: 0; }
+
+/* ---------- Tabelas ---------- */
+
+.tabela-rolagem { overflow-x: auto; }
+
+table.dados {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: .92rem;
+  background: #fff;
+  min-width: 520px;
+}
+
+table.dados th,
+table.dados td {
+  border: 1px solid var(--linha);
+  padding: .6rem .8rem;
+  text-align: left;
+  vertical-align: middle;
+}
+
+table.dados thead th {
+  background: var(--suave);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: .76rem;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
+
+table.dados tbody th {
+  background: #fbfaf8;
+  width: 26%;
+}
+
+table.dados tbody tr:hover td { background: #fbfaf8; }
+
+td.mono {
+  font-family: Consolas, "Courier New", monospace;
+  font-size: .86rem;
+}
+
+tr.vazio td {
+  color: var(--apoio);
+  font-style: italic;
+  text-align: center;
+}
+
+.etiqueta {
+  display: inline-block;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: .74rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  color: #fff;
+  padding: .2rem .55rem;
+  border-radius: 3px;
+  white-space: nowrap;
+}
+
+.etiqueta.invalida    { background: var(--erro); }
+.etiqueta.nao-vota    { background: var(--neutro); }
+.etiqueta.opcional    { background: var(--alerta); }
+.etiqueta.obrigatorio { background: var(--ok); }
+
+.situacao-ok  { color: var(--ok); font-weight: bold; }
+.situacao-nok { color: var(--erro); font-weight: bold; }
+
+footer {
+  margin-top: 3.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--linha);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: .82rem;
+  color: var(--apoio);
+}
+
+@media (max-width: 600px) {
+  body { padding: 1.75rem 1rem 3rem; }
+  .cabecalho h1 { font-size: 1.6rem; }
+  .idade-lida { font-size: 2rem; }
+}

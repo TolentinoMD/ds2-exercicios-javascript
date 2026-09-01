@@ -211,3 +211,37 @@ ambiguidade e convertem para número automaticamente — `"20" - 5` resulta em
 | `+"20" + 5` | `25` | number | O `+` unário converte antes da soma |
 | `parseInt("20a")` | `20` | number | Lê os dígitos iniciais e ignora o resto |
 | `Number("20a")` | `NaN` | number | Exige a string inteira válida |
+
+## Exercício 7 — Classificação do voto
+
+Página: `Exercicio7.html` (com `css/Exercicio7.css` e `js/exercicio05.js`).
+
+O programa solicita a idade e classifica a situação eleitoral:
+
+| Faixa | Condição | Saída |
+|---|---|---|
+| Entrada inválida | vazio, texto, negativo ou cancelado | `Idade inválida` |
+| Menos de 16 anos | `idade < 16` | `Não pode votar` |
+| 16 ou 17 anos | `idade < 18` | `Voto opcional` |
+| 18 anos ou mais | demais casos | `Voto obrigatório` |
+
+### Detalhes da implementação
+
+**Ordem das condições.** Como cada `else if` só é avaliado quando o anterior
+falha, ao chegar em `idade < 18` já se sabe que a idade é 16 ou maior. Escrever
+`idade >= 16 && idade < 18` seria redundante.
+
+**Validação em camadas.** São testados, antes da classificação: `null`
+(usuário clicou em Cancelar), string vazia, texto não numérico e valor
+negativo. Cada caso devolve um motivo distinto, o que facilita o diagnóstico.
+
+Dois cuidados importantes: `trim()` é necessário porque `Number("   ")` devolve
+`0`, e sem ele uma entrada só com espaços seria classificada como
+`Não pode votar` em vez de `Idade inválida`. E `isNaN()` é necessário porque
+`Number("abc")` devolve `NaN` — como toda comparação com `NaN` é falsa, sem essa
+verificação um texto qualquer cairia no último `else` e retornaria
+`Voto obrigatório`.
+
+A página inclui uma bateria de doze testes automáticos, cobrindo os casos de
+borda (15, 16, 17, 18, 0, negativo, vazio, espaços, texto e cancelamento), com
+a comparação entre o resultado obtido e o esperado.
