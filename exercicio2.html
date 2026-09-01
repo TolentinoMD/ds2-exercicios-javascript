@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Client-side e Server-side</title>
+  <link rel="stylesheet" href="css/Exercicio2.css">
+</head>
+<body>
+<main>
+
+  <header class="cabecalho">
+    <h1>Client-side e Server-side</h1>
+    <p class="subtitulo">Desenvolvimento para Servidores II Exercício 2</p>
+  </header>
+
+  <section>
+    <h2>Tabela comparativa</h2>
+    <div class="tabela-rolagem">
+      <table class="comparativa">
+        <thead>
+          <tr>
+            <th>Critério</th>
+            <th>Client-side</th>
+            <th>Server-side</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Local de execução</th>
+            <td>No navegador do usuário, na máquina dele (motor JavaScript: V8, SpiderMonkey).</td>
+            <td>Em um servidor remoto, sob controle do desenvolvedor ou da empresa.</td>
+          </tr>
+          <tr>
+            <th scope="row">Tecnologias de exemplo</th>
+            <td>HTML, CSS, JavaScript, TypeScript, React, Vue, Angular.</td>
+            <td>Node.js, PHP, Python (Django/Flask), Java (Spring), C# (.NET), Ruby on Rails, SQL.</td>
+          </tr>
+          <tr>
+            <th scope="row">Responsabilidades</th>
+            <td>Interface, interatividade, manipulação do DOM, validação preliminar de formulários, animações, feedback imediato.</td>
+            <td>Regras de negócio, autenticação e autorização, acesso ao banco de dados, validação definitiva, pagamentos, relatórios, integração com APIs.</td>
+          </tr>
+          <tr>
+            <th scope="row">Vantagens</th>
+            <td>Resposta instantânea sem esperar a rede; reduz o número de requisições; alivia a carga do servidor; melhora a experiência de uso.</td>
+            <td>Código e dados ficam ocultos do usuário; segurança e confiabilidade; acesso direto ao banco; resultado independe do dispositivo; centraliza a lógica.</td>
+          </tr>
+          <tr>
+            <th scope="row">Limitações</th>
+            <td>Todo o código é visível e alterável pelo usuário; depende do hardware e do navegador; não deve tratar dados sigilosos; pode ser desativado.</td>
+            <td>Cada operação consome recursos do servidor e gera latência de rede; custo de infraestrutura; precisa escalar conforme o número de usuários.</td>
+          </tr>
+          <tr>
+            <th scope="row">Tarefas adequadas</th>
+            <td>Máscara de CPF, mostrar e ocultar campos, validar formato de e-mail antes do envio, carrossel de imagens, tema claro/escuro, contador de caracteres.</td>
+            <td>Conferir senha, emitir nota fiscal, salvar pedido, calcular frete pela tabela oficial, enviar e-mail, gerar token de sessão, consultar histórico do cliente.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>Classificação das operações</h2>
+    <p class="apoio">Use os filtros para separar as operações por categoria.</p>
+
+    <div class="filtros" id="filtros">
+      <button type="button" class="filtro ativo" data-filtro="todos">Todos</button>
+      <button type="button" class="filtro" data-filtro="client">Client-side</button>
+      <button type="button" class="filtro" data-filtro="server">Server-side</button>
+      <button type="button" class="filtro" data-filtro="ambos">Ambos</button>
+    </div>
+
+    <ol class="operacoes" id="operacoes">
+      <!-- Preenchido dinamicamente por js/Exercicio2.js -->
+    </ol>
+
+    <p class="regra">
+      <strong>Regra prática:</strong> o que serve à experiência de uso pode ficar no
+      cliente; o que envolve segurança, dinheiro ou dados persistentes precisa ficar
+      no servidor. Nunca confie em nada que venha do navegador.
+    </p>
+  </section>
+
+  <section>
+    <h2>Demonstração prática</h2>
+    <p class="apoio">
+      Compare o tempo de resposta das duas operações. Abra o console com
+      <code>F12</code> para ver o registro de cada execução.
+    </p>
+
+    <div class="demo">
+      <div class="demo-bloco">
+        <h3>Client-side</h3>
+        <p>Alterar a cor do botão acontece no próprio navegador, sem rede.</p>
+        <button type="button" id="btnCor" class="botao-demo">Alterar minha cor</button>
+        <p class="tempo" id="tempoCliente">Aguardando execução…</p>
+      </div>
+
+      <div class="demo-bloco">
+        <h3>Server-side (simulado)</h3>
+        <p>Consultar o saldo exige ida ao servidor e volta com a resposta.</p>
+        <button type="button" id="btnSaldo" class="botao-demo">Consultar saldo</button>
+        <p class="tempo" id="tempoServidor">Aguardando execução…</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    Repositório <code>ds2-exercicios-javascript</code> 
+    Notas de aulas  Desenvolvimento para Servidores II 
+    Professor Marcos Costa
+  </footer>
+
+</main>
+
+<script src="js/Exercicio2.js"></script>
+</body>
+</html>

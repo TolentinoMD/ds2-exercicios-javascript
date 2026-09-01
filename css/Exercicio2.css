@@ -1,47 +1,239 @@
-    body {
-      margin: 0;
-      padding: 2.5rem 1.25rem 4rem;
-      background: #faf9f7;
-      color: #1c1c1e;
-      font-family: Georgia, "Times New Roman", serif;
-      line-height: 1.65;
-    }
-    main { max-width: 780px; margin: 0 auto; }
-    h1 { font-size: 2.1rem; margin: 0 0 .25rem; }
-    .subtitulo {
-      font-family: Arial, sans-serif;
-      font-size: .8rem;
-      text-transform: uppercase;
-      letter-spacing: .14em;
-      color: #6b6862;
-      margin: 0 0 2.25rem;
-    }
-    h2 {
-      font-size: 1.25rem;
-      margin: 2.5rem 0 .75rem;
-      padding-bottom: .4rem;
-      border-bottom: 1px solid #d8d4cd;
-    }
-    h3 { font-size: 1rem; margin: 1.5rem 0 .4rem; }
-    code {
-      font-family: Consolas, monospace;
-      font-size: .88em;
-      background: #efece6;
-      padding: .1rem .35rem;
-      border-radius: 3px;
-    }
-    .exemplo {
-      border-left: 3px solid #2f5d50;
-      padding: .1rem 0 .1rem 1rem;
-      margin: .9rem 0;
-      background: #f2f0ec;
-    }
-    ol.fluxo li { margin-bottom: .55rem; }
-    footer {
-      margin-top: 3.5rem;
-      padding-top: 1rem;
-      border-top: 1px solid #d8d4cd;
-      font-family: Arial, sans-serif;
-      font-size: .82rem;
-      color: #6b6862;
-    }
+:root {
+  --tinta: #1c1c1e;
+  --papel: #faf9f7;
+  --linha: #d8d4cd;
+  --suave: #f2f0ec;
+  --apoio: #6b6862;
+  --client: #1d5d9b;
+  --server: #2f5d50;
+  --ambos: #8a5a1e;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 2.5rem 1.25rem 4rem;
+  background: var(--papel);
+  color: var(--tinta);
+  font-family: Georgia, "Times New Roman", serif;
+  line-height: 1.6;
+}
+
+main { max-width: 900px; margin: 0 auto; }
+
+.cabecalho h1 {
+  font-size: 2.1rem;
+  margin: 0 0 .25rem;
+  letter-spacing: -.02em;
+}
+
+.subtitulo {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: .8rem;
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  color: var(--apoio);
+  margin: 0 0 2.5rem;
+}
+
+h2 {
+  font-size: 1.25rem;
+  margin: 2.75rem 0 .75rem;
+  padding-bottom: .4rem;
+  border-bottom: 1px solid var(--linha);
+}
+
+h3 { font-size: 1rem; margin: 0 0 .35rem; }
+
+.apoio { color: var(--apoio); font-size: .95rem; margin-top: 0; }
+
+code {
+  font-family: Consolas, "Courier New", monospace;
+  font-size: .88em;
+  background: #efece6;
+  padding: .1rem .35rem;
+  border-radius: 3px;
+}
+
+.tabela-rolagem { overflow-x: auto; }
+
+table.comparativa {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: .92rem;
+  background: #fff;
+  min-width: 620px;
+}
+
+table.comparativa th,
+table.comparativa td {
+  border: 1px solid var(--linha);
+  padding: .7rem .85rem;
+  vertical-align: top;
+  text-align: left;
+}
+
+table.comparativa thead th {
+  background: var(--suave);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: .78rem;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
+
+table.comparativa tbody th {
+  background: #fbfaf8;
+  width: 22%;
+  font-weight: bold;
+}
+
+table.comparativa tbody tr:hover td { background: #fbfaf8; }
+
+/* ---------- Filtros ---------- */
+
+.filtros {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin: 1rem 0 1.5rem;
+}
+
+.filtro {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: .85rem;
+  padding: .45rem .9rem;
+  border: 1px solid var(--linha);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--tinta);
+  cursor: pointer;
+}
+
+.filtro:hover { background: var(--suave); }
+
+.filtro.ativo {
+  background: var(--tinta);
+  border-color: var(--tinta);
+  color: #fff;
+}
+
+
+.operacoes {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  counter-reset: item;
+}
+
+.operacao {
+  position: relative;
+  border: 1px solid var(--linha);
+  border-left-width: 4px;
+  border-radius: 5px;
+  background: #fff;
+  padding: 1rem 1.1rem 1rem 3.1rem;
+  margin-bottom: .85rem;
+}
+
+.operacao::before {
+  counter-increment: item;
+  content: counter(item);
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: .8rem;
+  font-weight: bold;
+  color: var(--apoio);
+}
+
+.operacao.oculta { display: none; }
+
+.operacao[data-tipo="client"] { border-left-color: var(--client); }
+.operacao[data-tipo="server"] { border-left-color: var(--server); }
+.operacao[data-tipo="ambos"]  { border-left-color: var(--ambos); }
+
+.operacao h3 {
+  font-size: 1.02rem;
+  margin: 0 0 .4rem;
+}
+
+.etiqueta {
+  display: inline-block;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: .7rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: .07em;
+  color: #fff;
+  padding: .18rem .55rem;
+  border-radius: 3px;
+  margin-bottom: .5rem;
+}
+
+.etiqueta[data-tipo="client"] { background: var(--client); }
+.etiqueta[data-tipo="server"] { background: var(--server); }
+.etiqueta[data-tipo="ambos"]  { background: var(--ambos); }
+
+.justificativa { margin: 0; font-size: .96rem; }
+
+.regra {
+  border-left: 3px solid var(--server);
+  background: var(--suave);
+  padding: .85rem 1rem;
+  margin-top: 1.5rem;
+  font-size: .96rem;
+}
+
+
+.demo {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.demo-bloco {
+  flex: 1 1 260px;
+  border: 1px solid var(--linha);
+  border-radius: 5px;
+  background: #fff;
+  padding: 1.1rem;
+}
+
+.demo-bloco p { font-size: .93rem; }
+
+.botao-demo {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: .9rem;
+  padding: .55rem 1rem;
+  border: 1px solid var(--tinta);
+  border-radius: 4px;
+  background: var(--tinta);
+  color: #fff;
+  cursor: pointer;
+  transition: background-color .2s ease;
+}
+
+.botao-demo:disabled { opacity: .55; cursor: wait; }
+
+.tempo {
+  font-family: Consolas, "Courier New", monospace;
+  font-size: .82rem;
+  color: var(--apoio);
+  margin: .7rem 0 0;
+}
+
+footer {
+  margin-top: 3.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--linha);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: .82rem;
+  color: var(--apoio);
+}
+
+@media (max-width: 600px) {
+  body { padding: 1.75rem 1rem 3rem; }
+  .cabecalho h1 { font-size: 1.7rem; }
+}
